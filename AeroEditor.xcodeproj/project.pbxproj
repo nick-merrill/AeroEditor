@@ -1,0 +1,415 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		011D897C1B69EB7D003D605D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D897B1B69EB7D003D605D /* AppDelegate.swift */; };
+		011D897E1B69EB7D003D605D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D897D1B69EB7D003D605D /* ViewController.swift */; };
+		011D89801B69EB7D003D605D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 011D897F1B69EB7D003D605D /* Images.xcassets */; };
+		011D89831B69EB7D003D605D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011D89811B69EB7D003D605D /* Main.storyboard */; };
+		011D898F1B69EB7D003D605D /* AeroEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D898E1B69EB7D003D605D /* AeroEditorTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		011D89891B69EB7D003D605D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 011D896E1B69EB7D003D605D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 011D89751B69EB7D003D605D;
+			remoteInfo = AeroEditor;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		011D89761B69EB7D003D605D /* AeroEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AeroEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		011D897A1B69EB7D003D605D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		011D897B1B69EB7D003D605D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		011D897D1B69EB7D003D605D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		011D897F1B69EB7D003D605D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		011D89821B69EB7D003D605D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		011D89881B69EB7D003D605D /* AeroEditorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AeroEditorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		011D898D1B69EB7D003D605D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		011D898E1B69EB7D003D605D /* AeroEditorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeroEditorTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		011D89731B69EB7D003D605D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		011D89851B69EB7D003D605D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		011D896D1B69EB7D003D605D = {
+			isa = PBXGroup;
+			children = (
+				011D89781B69EB7D003D605D /* AeroEditor */,
+				011D898B1B69EB7D003D605D /* AeroEditorTests */,
+				011D89771B69EB7D003D605D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		011D89771B69EB7D003D605D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				011D89761B69EB7D003D605D /* AeroEditor.app */,
+				011D89881B69EB7D003D605D /* AeroEditorTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		011D89781B69EB7D003D605D /* AeroEditor */ = {
+			isa = PBXGroup;
+			children = (
+				011D897B1B69EB7D003D605D /* AppDelegate.swift */,
+				011D897D1B69EB7D003D605D /* ViewController.swift */,
+				011D897F1B69EB7D003D605D /* Images.xcassets */,
+				011D89811B69EB7D003D605D /* Main.storyboard */,
+				011D89791B69EB7D003D605D /* Supporting Files */,
+			);
+			path = AeroEditor;
+			sourceTree = "<group>";
+		};
+		011D89791B69EB7D003D605D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				011D897A1B69EB7D003D605D /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		011D898B1B69EB7D003D605D /* AeroEditorTests */ = {
+			isa = PBXGroup;
+			children = (
+				011D898E1B69EB7D003D605D /* AeroEditorTests.swift */,
+				011D898C1B69EB7D003D605D /* Supporting Files */,
+			);
+			path = AeroEditorTests;
+			sourceTree = "<group>";
+		};
+		011D898C1B69EB7D003D605D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				011D898D1B69EB7D003D605D /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		011D89751B69EB7D003D605D /* AeroEditor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 011D89921B69EB7D003D605D /* Build configuration list for PBXNativeTarget "AeroEditor" */;
+			buildPhases = (
+				011D89721B69EB7D003D605D /* Sources */,
+				011D89731B69EB7D003D605D /* Frameworks */,
+				011D89741B69EB7D003D605D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AeroEditor;
+			productName = AeroEditor;
+			productReference = 011D89761B69EB7D003D605D /* AeroEditor.app */;
+			productType = "com.apple.product-type.application";
+		};
+		011D89871B69EB7D003D605D /* AeroEditorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 011D89951B69EB7D003D605D /* Build configuration list for PBXNativeTarget "AeroEditorTests" */;
+			buildPhases = (
+				011D89841B69EB7D003D605D /* Sources */,
+				011D89851B69EB7D003D605D /* Frameworks */,
+				011D89861B69EB7D003D605D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				011D898A1B69EB7D003D605D /* PBXTargetDependency */,
+			);
+			name = AeroEditorTests;
+			productName = AeroEditorTests;
+			productReference = 011D89881B69EB7D003D605D /* AeroEditorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		011D896E1B69EB7D003D605D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "Nick Merrill";
+				TargetAttributes = {
+					011D89751B69EB7D003D605D = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					011D89871B69EB7D003D605D = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 011D89751B69EB7D003D605D;
+					};
+				};
+			};
+			buildConfigurationList = 011D89711B69EB7D003D605D /* Build configuration list for PBXProject "AeroEditor" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 011D896D1B69EB7D003D605D;
+			productRefGroup = 011D89771B69EB7D003D605D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				011D89751B69EB7D003D605D /* AeroEditor */,
+				011D89871B69EB7D003D605D /* AeroEditorTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		011D89741B69EB7D003D605D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				011D89801B69EB7D003D605D /* Images.xcassets in Resources */,
+				011D89831B69EB7D003D605D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		011D89861B69EB7D003D605D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		011D89721B69EB7D003D605D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				011D897E1B69EB7D003D605D /* ViewController.swift in Sources */,
+				011D897C1B69EB7D003D605D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		011D89841B69EB7D003D605D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				011D898F1B69EB7D003D605D /* AeroEditorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		011D898A1B69EB7D003D605D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 011D89751B69EB7D003D605D /* AeroEditor */;
+			targetProxy = 011D89891B69EB7D003D605D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		011D89811B69EB7D003D605D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				011D89821B69EB7D003D605D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		011D89901B69EB7D003D605D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		011D89911B69EB7D003D605D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		011D89931B69EB7D003D605D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AeroEditor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		011D89941B69EB7D003D605D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AeroEditor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		011D89961B69EB7D003D605D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AeroEditorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AeroEditor.app/Contents/MacOS/AeroEditor";
+			};
+			name = Debug;
+		};
+		011D89971B69EB7D003D605D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AeroEditorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AeroEditor.app/Contents/MacOS/AeroEditor";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		011D89711B69EB7D003D605D /* Build configuration list for PBXProject "AeroEditor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				011D89901B69EB7D003D605D /* Debug */,
+				011D89911B69EB7D003D605D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		011D89921B69EB7D003D605D /* Build configuration list for PBXNativeTarget "AeroEditor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				011D89931B69EB7D003D605D /* Debug */,
+				011D89941B69EB7D003D605D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		011D89951B69EB7D003D605D /* Build configuration list for PBXNativeTarget "AeroEditorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				011D89961B69EB7D003D605D /* Debug */,
+				011D89971B69EB7D003D605D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 011D896E1B69EB7D003D605D /* Project object */;
+}
