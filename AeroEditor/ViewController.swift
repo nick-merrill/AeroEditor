@@ -7,8 +7,17 @@
 //
 
 import Cocoa
+import AVKit
+import AVFoundation
 
 class ViewController: NSViewController {
+    
+    @IBOutlet weak var fileDisplay: NSTextField!
+    @IBOutlet weak var previewImageView: NSImageView!
+    @IBOutlet weak var playerView: AVPlayerView!
+    
+    var videoURLs = [NSURL]()
+    var activeProcessor:NMVideoProcessor?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +31,51 @@ class ViewController: NSViewController {
         }
     }
 
+    
+    // Allows user to choose which video files to process
+    @IBAction func addFiles(sender: AnyObject) {
+        let openPanel = NSOpenPanel()
+        openPanel.allowsMultipleSelection = true
+        openPanel.runModal()
+        self.videoURLs += openPanel.URLs as! [NSURL]
+        self.updateFileDisplay()
+    }
+    @IBAction func clearFiles(sender: AnyObject) {
+        self.videoURLs.removeAll(keepCapacity: false)
+        self.updateFileDisplay()
+    }
+    
+    func updateFileDisplay() {
+        let str:NSMutableString = ""
+        for url in self.videoURLs {
+            str.appendString("• ")
+            str.appendString(url.lastPathComponent!)
+            str.appendString("\n")
+        }
+        self.fileDisplay.stringValue = str as String
+    }
 
+    // Begins processing video files
+    @IBAction func process(sender: AnyObject) {
+        let processor = NMVideoProcessor(forFiles: self.videoURLs)
+        self.activeProcessor = processor
+        
+        processor.identifyInterestingTimes()
+        processor.insertFootageFromInterestingTimes()
+        
+        // Set preview video to monitor composition
+        let playerItem = AVPlayerItem(asset: processor.composition)
+        self.playerView.player = AVPlayer(playerItem: playerItem)
+    }
+    
+    @IBAction func previewImageFrame(sender: AnyObject) {
+        if let processor = self.activeProcessor {
+            processor.getPreviewFrame({
+                image in
+                println("about to show frame")
+                self.previewImageView.image = NSImage(CGImage: image, size: self.previewImageView.frame.size)
+            })
+        }
+    }
 }
 

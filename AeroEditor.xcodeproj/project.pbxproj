@@ -12,6 +12,8 @@
 		011D89801B69EB7D003D605D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 011D897F1B69EB7D003D605D /* Images.xcassets */; };
 		011D89831B69EB7D003D605D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011D89811B69EB7D003D605D /* Main.storyboard */; };
 		011D898F1B69EB7D003D605D /* AeroEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D898E1B69EB7D003D605D /* AeroEditorTests.swift */; };
+		011D89991B69F4E0003D605D /* NMVideoProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D89981B69F4E0003D605D /* NMVideoProcessor.swift */; };
+		011D899B1B69F6BE003D605D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011D899A1B69F6BE003D605D /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,8 @@
 		011D89881B69EB7D003D605D /* AeroEditorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AeroEditorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		011D898D1B69EB7D003D605D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		011D898E1B69EB7D003D605D /* AeroEditorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeroEditorTests.swift; sourceTree = "<group>"; };
+		011D89981B69F4E0003D605D /* NMVideoProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NMVideoProcessor.swift; sourceTree = "<group>"; };
+		011D899A1B69F6BE003D605D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				011D899B1B69F6BE003D605D /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +62,7 @@
 		011D896D1B69EB7D003D605D = {
 			isa = PBXGroup;
 			children = (
+				011D899A1B69F6BE003D605D /* AVFoundation.framework */,
 				011D89781B69EB7D003D605D /* AeroEditor */,
 				011D898B1B69EB7D003D605D /* AeroEditorTests */,
 				011D89771B69EB7D003D605D /* Products */,
@@ -79,6 +85,7 @@
 				011D897D1B69EB7D003D605D /* ViewController.swift */,
 				011D897F1B69EB7D003D605D /* Images.xcassets */,
 				011D89811B69EB7D003D605D /* Main.storyboard */,
+				011D89981B69F4E0003D605D /* NMVideoProcessor.swift */,
 				011D89791B69EB7D003D605D /* Supporting Files */,
 			);
 			path = AeroEditor;
@@ -158,6 +165,7 @@
 				TargetAttributes = {
 					011D89751B69EB7D003D605D = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = A5J322S23K;
 					};
 					011D89871B69EB7D003D605D = {
 						CreatedOnToolsVersion = 6.4;
@@ -209,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				011D897E1B69EB7D003D605D /* ViewController.swift in Sources */,
+				011D89991B69F4E0003D605D /* NMVideoProcessor.swift in Sources */,
 				011D897C1B69EB7D003D605D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,6 +336,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AeroEditor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -338,6 +348,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AeroEditor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
