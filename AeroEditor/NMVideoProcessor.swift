@@ -107,6 +107,13 @@ class NMImageAnalyzer: NSObject {
         super.init()
         
         // Create histogram
+//        self.generateHistogram()
+        
+        // Create average pixel value grid
+        self.generateAverageGrid()
+    }
+    
+    private func generateHistogram() {
         var intensityHistogramBuckets = [Float?](count: HISTOGRAM_NUM_BUCKETS, repeatedValue: nil)
         for var i in 0..<HISTOGRAM_NUM_BUCKETS {
             intensityHistogramBuckets[i] = Float(i) / Float(HISTOGRAM_NUM_BUCKETS)
@@ -127,8 +134,9 @@ class NMImageAnalyzer: NSObject {
                 self.intensityHistogram[bucketIndex]++
             }
         }
-        
-        // Create average pixel value grid
+    }
+    
+    private func generateAverageGrid() {
         let widthPerGridPanel = self.pixelsWide / GRID_WIDTH
         let heightPerGridPanel = self.pixelsHigh / GRID_HEIGHT
         self.averageGrid = Array<[NMPixel?]>(count: GRID_HEIGHT, repeatedValue: [NMPixel?]())
@@ -142,7 +150,7 @@ class NMImageAnalyzer: NSObject {
                 var redSum: Float = 0
                 var greenSum: Float = 0
                 var blueSum: Float = 0
-//                var intensitySum: Float = 0
+                //                var intensitySum: Float = 0
                 var count: Int = 0
                 for var y = heightOffset; y < heightOffset + heightPerGridPanel; y += GRID_SKIP_PIXELS {
                     for var x = widthOffset; x < widthOffset + widthPerGridPanel; x += GRID_SKIP_PIXELS {
@@ -151,7 +159,7 @@ class NMImageAnalyzer: NSObject {
                         redSum += pixel.red
                         greenSum += pixel.green
                         blueSum += pixel.blue
-//                        intensitySum += pixel.intensity()
+                        //                        intensitySum += pixel.intensity()
                         count++
                     }
                 }
@@ -301,7 +309,7 @@ class NMVideoProcessor: NSObject {
         print("finding interesting times")
 
         if let asset = self.primaryAsset {
-            let assetDuration = Int64(asset.duration.seconds)
+            let assetDuration = Int64(asset.duration.seconds * Double(VIDEO_TIME_SCALE))
             let COMPARE_DISTANCE: Int64 = 20
             for var t: Int64 = 0; t < assetDuration; t += COMPARE_DISTANCE {
                 do {
