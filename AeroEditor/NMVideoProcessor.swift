@@ -32,6 +32,10 @@ class NMPixel: NSObject {
     let green: Float
     let blue: Float
     
+    override var description: String {
+        return "(\(self.red256()), \(self.green256()), \(self.blue256()))"
+    }
+    
     init(alphaF: Float, redF: Float, greenF: Float, blueF: Float) {
         self.alpha = alphaF
         self.red = redF
@@ -58,6 +62,18 @@ class NMPixel: NSObject {
     func intensity() -> Float {
         return (red + green + blue) / 3.0
     }
+    
+    func red256() -> UInt8 {
+        return UInt8(self.red * 255)
+    }
+    
+    func green256() -> UInt8 {
+        return UInt8(self.green * 255)
+    }
+    
+    func blue256() -> UInt8 {
+        return UInt8(self.blue * 255)
+    }
 }
 
 
@@ -69,11 +85,12 @@ class NMImageAnalyzer: NSObject {
     let pixelsHigh: Int
 
     var intensityHistogram: [Int] = [Int]()
-    var averageGrid: [NMPixel?] = [NMPixel]()
+    var averageGrid: [[NMPixel?]] = []  // 2D array in the form [y, x]
     
     override var description: String {
         return "Size: \(self.pixelsWide)x\(self.pixelsHigh)\n" +
-            "Intensity Histogram: \(self.intensityHistogram)"
+            "Intensity Histogram: \(self.intensityHistogram)\n" +
+            "Color Grid: \(self.averageGrid)"
     }
     
     init(image: CGImage) {
@@ -92,9 +109,9 @@ class NMImageAnalyzer: NSObject {
             intensityHistogramBuckets[i] = Float(i) / Float(HISTOGRAM_NUM_BUCKETS)
         }
         self.intensityHistogram = [Int](count: HISTOGRAM_NUM_BUCKETS, repeatedValue: 0)
-        for var i = 0; i < self.pixelsHigh; i += HISTOGRAM_SKIP_PIXELS {
-            for var j = 0; j < self.pixelsWide; j += HISTOGRAM_SKIP_PIXELS {
-                let pixel = self.pixelAt(x: i, y: j)
+        for var y = 0; y < self.pixelsHigh; y += HISTOGRAM_SKIP_PIXELS {
+            for var x = 0; x < self.pixelsWide; x += HISTOGRAM_SKIP_PIXELS {
+                let pixel = self.pixelAt(x: x, y: y)
                 let intensity = pixel.intensity()
                 var bucketIndex = 0
                 while bucketIndex < HISTOGRAM_NUM_BUCKETS - 1 {
@@ -114,8 +131,9 @@ class NMImageAnalyzer: NSObject {
         let GRID_SKIP_PIXELS = HISTOGRAM_SKIP_PIXELS
         let widthPerGridPanel = self.pixelsWide / GRID_WIDTH
         let heightPerGridPanel = self.pixelsHigh / GRID_HEIGHT
-        self.averageGrid = [NMPixel?](count: GRID_WIDTH * GRID_HEIGHT, repeatedValue: nil)
+        self.averageGrid = Array<[NMPixel?]>(count: GRID_HEIGHT, repeatedValue: [NMPixel?]())
         for var m in 0..<GRID_HEIGHT {
+            self.averageGrid[m] = [NMPixel?](count: GRID_WIDTH, repeatedValue: nil)
             for var n in 0..<GRID_WIDTH {
                 // Calculate average pixel color within grid panel (n, m)
                 let widthOffset = n * widthPerGridPanel
@@ -126,9 +144,9 @@ class NMImageAnalyzer: NSObject {
                 var blueSum: Float = 0
 //                var intensitySum: Float = 0
                 var count: Int = 0
-                for var i = widthOffset; i < widthOffset + widthPerGridPanel; i += GRID_SKIP_PIXELS {
-                    for var j = heightOffset; j < heightOffset + heightPerGridPanel; j += GRID_SKIP_PIXELS {
-                        let pixel = self.pixelAt(x: i, y: j)
+                for var y = heightOffset; y < heightOffset + heightPerGridPanel; y += GRID_SKIP_PIXELS {
+                    for var x = widthOffset; x < widthOffset + widthPerGridPanel; x += GRID_SKIP_PIXELS {
+                        let pixel = self.pixelAt(x: x, y: y)
                         alphaSum += pixel.alpha
                         redSum += pixel.red
                         greenSum += pixel.green
@@ -137,13 +155,13 @@ class NMImageAnalyzer: NSObject {
                         count++
                     }
                 }
-                var countF = Float(count)
+                let countF = Float(count)
                 let averagePixel = NMPixel(
                     alphaF: alphaSum / countF,
                     redF: redSum / countF,
                     greenF: greenSum / countF,
                     blueF: blueSum / countF)
-                self.averageGrid[m * GRID_WIDTH + n] = averagePixel
+                self.averageGrid[m][n] = averagePixel
             }
         }
     }
