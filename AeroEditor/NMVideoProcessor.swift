@@ -85,7 +85,8 @@ let GRID_HEIGHT = 10
 let GRID_SKIP_PIXELS = HISTOGRAM_SKIP_PIXELS
 
 class NMImageAnalyzer: NSObject {
-    let imageData: UnsafePointer<UInt8>
+    var bitmapData: UnsafeMutablePointer<Void>
+    var imageData: UnsafePointer<UInt8>
     let pixelsWide: Int
     let pixelsHigh: Int
 
@@ -100,7 +101,8 @@ class NMImageAnalyzer: NSObject {
     
     init(image: CGImage) {
         let bitmapContext = NMImageAnalyzer.bitmapContext(image)
-        let uncastedData = CGBitmapContextGetData(bitmapContext)
+        self.bitmapData = bitmapContext.bitmapData
+        let uncastedData = CGBitmapContextGetData(bitmapContext.context)
         self.imageData = UnsafePointer<UInt8>(uncastedData)
         self.pixelsWide = CGImageGetWidth(image)
         self.pixelsHigh = CGImageGetHeight(image)
@@ -111,6 +113,10 @@ class NMImageAnalyzer: NSObject {
         
         // Create average pixel value grid
         self.generateAverageGrid()
+    }
+    
+    deinit {
+        free(self.bitmapData)
     }
     
     private func generateHistogram() {
@@ -175,7 +181,7 @@ class NMImageAnalyzer: NSObject {
     }
     
     // From https://gist.github.com/jokester/948616a1b881451796d6
-    private class func bitmapContext(img: CGImage) -> CGContextRef {
+    private class func bitmapContext(img: CGImage) -> (context: CGContextRef, bitmapData: UnsafeMutablePointer<Void>) {
         // Get image width, height
         let pixelsWide = CGImageGetWidth(img)
         let pixelsHigh = CGImageGetHeight(img)
@@ -204,7 +210,7 @@ class NMImageAnalyzer: NSObject {
         let rect = CGRect(x: 0, y: 0, width: pixelsWide, height: pixelsHigh)
         CGContextDrawImage(context, rect, img)
         
-        return context
+        return (context, bitmapData)
     }
     
     private func pixelAt(x x: Int, y: Int) -> NMPixel {
