@@ -77,9 +77,14 @@ class NMPixel: NSObject {
 }
 
 
-class NMImageAnalyzer: NSObject {
-    let BYTES_PER_PIXEL = 4
+let BYTES_PER_PIXEL = 4
+let HISTOGRAM_NUM_BUCKETS = 30
+let HISTOGRAM_SKIP_PIXELS = 4
+let GRID_WIDTH = 4
+let GRID_HEIGHT = 3
+let GRID_SKIP_PIXELS = HISTOGRAM_SKIP_PIXELS
 
+class NMImageAnalyzer: NSObject {
     let imageData: UnsafePointer<UInt8>
     let pixelsWide: Int
     let pixelsHigh: Int
@@ -102,8 +107,6 @@ class NMImageAnalyzer: NSObject {
         super.init()
         
         // Create histogram
-        let HISTOGRAM_NUM_BUCKETS = 30
-        let HISTOGRAM_SKIP_PIXELS = 4
         var intensityHistogramBuckets = [Float?](count: HISTOGRAM_NUM_BUCKETS, repeatedValue: nil)
         for var i in 0..<HISTOGRAM_NUM_BUCKETS {
             intensityHistogramBuckets[i] = Float(i) / Float(HISTOGRAM_NUM_BUCKETS)
@@ -126,18 +129,15 @@ class NMImageAnalyzer: NSObject {
         }
         
         // Create average pixel value grid
-        let GRID_WIDTH = 4
-        let GRID_HEIGHT = 3
-        let GRID_SKIP_PIXELS = HISTOGRAM_SKIP_PIXELS
         let widthPerGridPanel = self.pixelsWide / GRID_WIDTH
         let heightPerGridPanel = self.pixelsHigh / GRID_HEIGHT
         self.averageGrid = Array<[NMPixel?]>(count: GRID_HEIGHT, repeatedValue: [NMPixel?]())
-        for var m in 0..<GRID_HEIGHT {
-            self.averageGrid[m] = [NMPixel?](count: GRID_WIDTH, repeatedValue: nil)
-            for var n in 0..<GRID_WIDTH {
-                // Calculate average pixel color within grid panel (n, m)
-                let widthOffset = n * widthPerGridPanel
-                let heightOffset = m * heightPerGridPanel
+        for var n in 0..<GRID_HEIGHT {
+            self.averageGrid[n] = [NMPixel?](count: GRID_WIDTH, repeatedValue: nil)
+            for var m in 0..<GRID_WIDTH {
+                // Calculate average pixel color within grid panel (m, n)
+                let widthOffset = m * widthPerGridPanel
+                let heightOffset = n * heightPerGridPanel
                 var alphaSum: Float = 0
                 var redSum: Float = 0
                 var greenSum: Float = 0
@@ -161,7 +161,7 @@ class NMImageAnalyzer: NSObject {
                     redF: redSum / countF,
                     greenF: greenSum / countF,
                     blueF: blueSum / countF)
-                self.averageGrid[m][n] = averagePixel
+                self.averageGrid[n][m] = averagePixel
             }
         }
     }
@@ -209,6 +209,20 @@ class NMImageAnalyzer: NSObject {
             green: self.imageData[offset + 2],
             blue: self.imageData[offset + 3])
     }
+    
+    // Compares each color grid panel and returns average difference between all panels
+    func differenceScoreByColorGrid(analyzer2: NMImageAnalyzer) -> Float {
+        var differenceSum: Float = 0
+        for var n in 0..<GRID_HEIGHT {
+            for var m in 0..<GRID_WIDTH {
+                let pixel1 = self.averageGrid[n][m]!
+                let pixel2 = analyzer2.averageGrid[n][m]!
+                let difference: Float = pixel1.differenceScore(pixel2)
+                differenceSum += difference
+            }
+        }
+        return differenceSum / Float(GRID_HEIGHT * GRID_WIDTH)
+    }
 }
 
 
@@ -248,14 +262,11 @@ class NMVideoFrame: NSObject {
         return NMImageAnalyzer(image: self.image!)
     }
     
-    func differenceScoreByHistogram(frame2: NMVideoFrame) -> Float {
-        let hist1 = self.imageAnalyzer()
-        let hist2 = frame2.imageAnalyzer()
-        print(hist1)
-        print(hist2)
-        return 42
+    func differenceScore(frame2: NMVideoFrame) -> Float {
+        let analyzer1 = self.imageAnalyzer()
+        let analyzer2 = frame2.imageAnalyzer()
+        return analyzer1.differenceScoreByColorGrid(analyzer2)
     }
-
 }
 
 
@@ -286,27 +297,31 @@ class NMVideoProcessor: NSObject {
     var currentCompositionTime = kCMTimeZero
     
     // Finds "interesting" times in all asset video tracks.
-    func identifyInterestingTimes() {
+    func analyzeInterestingTimes() {
         print("finding interesting times")
 
         if let asset = self.primaryAsset {
-            // experiment::
-            do {
-                let frame1 = try NMVideoFrame(asset: asset, time: CMTimeMake(0, VIDEO_TIME_SCALE))
-                let frame2 = try NMVideoFrame(asset: asset, time: CMTimeMake(10, VIDEO_TIME_SCALE))
-                let diff = frame1.differenceScoreByHistogram(frame2)
-                print(diff)
-            } catch {
-                print("Error initializing NMVideoFrame")
+            let assetDuration = Int64(asset.duration.seconds)
+            let COMPARE_DISTANCE: Int64 = 20
+            for var t: Int64 = 0; t < assetDuration; t += COMPARE_DISTANCE {
+                do {
+                    let frame1 = try NMVideoFrame(asset: asset, time: CMTimeMake(t, VIDEO_TIME_SCALE))
+                    let frame2 = try NMVideoFrame(asset: asset, time: CMTimeMake(t + COMPARE_DISTANCE, VIDEO_TIME_SCALE))
+                    let diff = frame1.differenceScore(frame2)
+                    print("Time: \(Float(t) / Float(VIDEO_TIME_SCALE))s \t Score: \(diff)")
+                    
+                    self.interestingTimes.append(NMInterestingTimeRange(start: t, duration: COMPARE_DISTANCE, score: diff))
+                } catch {
+                    print("Error initializing NMVideoFrame")
+                }
             }
         }
-
-        self.interestingTimes = []  // TODO
-
-//        self.interestingTimes = [
-//            NMInterestingTimeRange(start: 200, duration: 50, score: 40.5),
-//            NMInterestingTimeRange(start: 500, duration: 20, score: 100),
-//        ]
+    }
+    
+    func sortInterestingTimes() {
+        print("sorting interesting times")
+        
+        self.interestingTimes.sortInPlace({ $0.score > $1.score })
     }
     
     func insertFootageFromInterestingTimes() {

@@ -14,6 +14,7 @@
 		011D898F1B69EB7D003D605D /* AeroEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D898E1B69EB7D003D605D /* AeroEditorTests.swift */; };
 		011D89991B69F4E0003D605D /* NMVideoProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D89981B69F4E0003D605D /* NMVideoProcessor.swift */; };
 		011D899B1B69F6BE003D605D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011D899A1B69F6BE003D605D /* AVFoundation.framework */; };
+		0175F68F1B7093FD003B30E5 /* DetailWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0175F68E1B7093FD003B30E5 /* DetailWindowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		011D898E1B69EB7D003D605D /* AeroEditorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeroEditorTests.swift; sourceTree = "<group>"; };
 		011D89981B69F4E0003D605D /* NMVideoProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NMVideoProcessor.swift; sourceTree = "<group>"; };
 		011D899A1B69F6BE003D605D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		0175F68E1B7093FD003B30E5 /* DetailWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailWindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			children = (
 				011D897B1B69EB7D003D605D /* AppDelegate.swift */,
 				011D897D1B69EB7D003D605D /* ViewController.swift */,
+				0175F68E1B7093FD003B30E5 /* DetailWindowController.swift */,
 				011D897F1B69EB7D003D605D /* Images.xcassets */,
 				011D89811B69EB7D003D605D /* Main.storyboard */,
 				011D89981B69F4E0003D605D /* NMVideoProcessor.swift */,
@@ -219,6 +222,7 @@
 			files = (
 				011D897E1B69EB7D003D605D /* ViewController.swift in Sources */,
 				011D89991B69F4E0003D605D /* NMVideoProcessor.swift in Sources */,
+				0175F68F1B7093FD003B30E5 /* DetailWindowController.swift in Sources */,
 				011D897C1B69EB7D003D605D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

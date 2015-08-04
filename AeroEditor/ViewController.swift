@@ -13,8 +13,9 @@ import AVFoundation
 class ViewController: NSViewController {
     
     @IBOutlet weak var fileDisplay: NSTextField!
-    @IBOutlet weak var previewImageView: NSImageView!
     @IBOutlet weak var playerView: AVPlayerView!
+    
+    lazy var detailWindowCtrl: DetailWindowController = self.storyboard!.instantiateControllerWithIdentifier("DetailWindowController") as! DetailWindowController
     
     var videoURLs = [NSURL]()
     var activeProcessor:NMVideoProcessor?
@@ -60,7 +61,8 @@ class ViewController: NSViewController {
         let processor = NMVideoProcessor(forFiles: self.videoURLs)
         self.activeProcessor = processor
         
-        processor.identifyInterestingTimes()
+        processor.analyzeInterestingTimes()
+        processor.sortInterestingTimes()
         processor.insertFootageFromInterestingTimes()
         
         // Set preview video to monitor composition
@@ -68,14 +70,18 @@ class ViewController: NSViewController {
         self.playerView.player = AVPlayer(playerItem: playerItem)
     }
     
-    @IBAction func previewImageFrame(sender: AnyObject) {
-        if let processor = self.activeProcessor {
-            processor.getPreviewFrame({
-                image in
-                print("about to show frame")
-                self.previewImageView.image = NSImage(CGImage: image, size: self.previewImageView.frame.size)
-            })
-        }
+    @IBAction func showInterestingFootage(sender: AnyObject) {
+        detailWindowCtrl.showWindow(self)
     }
+    
+//    @IBAction func previewImageFrame(sender: AnyObject) {
+//        if let processor = self.activeProcessor {
+//            processor.getPreviewFrame({
+//                image in
+//                print("about to show frame")
+//                self.previewImageView.image = NSImage(CGImage: image, size: self.previewImageView.frame.size)
+//            })
+//        }
+//    }
 }
 

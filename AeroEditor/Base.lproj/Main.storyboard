@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8164.2" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.AVKitIBPlugin" version="7706"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+        <plugIn identifier="com.apple.AVKitIBPlugin" version="8164.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8164.2"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -180,10 +180,10 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Main" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="196" y="240" width="480" height="334"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     </window>
                     <connections>
@@ -192,7 +192,38 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="75" y="282"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="sPL-vK-pdr">
+            <objects>
+                <windowController storyboardIdentifier="DetailWindowController" id="Vud-jO-ZSB" customClass="DetailWindowController" customModule="AeroEditor" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Details" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Cep-0K-BO3">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="294" y="362" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+                    </window>
+                    <connections>
+                        <segue destination="wOE-kO-i9K" kind="relationship" relationship="window.shadowedContentViewController" id="nh2-nb-LTX"/>
+                    </connections>
+                </windowController>
+                <customObject id="D14-3B-koJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="641" y="276"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="S8v-Qt-bcM">
+            <objects>
+                <viewController id="wOE-kO-i9K" sceneMemberID="viewController">
+                    <view key="view" id="vyx-ln-Tl1">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="3en-Hj-cQ7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="650" y="750"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -212,8 +243,8 @@
                                     <action selector="addFiles:" target="XfG-lQ-9wD" id="hFU-gD-BWX"/>
                                 </connections>
                             </button>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AL1-P1-2Rp">
-                                <rect key="frame" x="18" y="139" width="445" height="49"/>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" ambiguous="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AL1-P1-2Rp">
+                                <rect key="frame" x="18" y="176" width="445" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="INu-9d-NBP"/>
                                     <constraint firstAttribute="width" constant="441" id="JLx-4o-izd"/>
@@ -244,51 +275,40 @@
                                     <action selector="clearFiles:" target="XfG-lQ-9wD" id="fRe-hl-VYU"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="J7k-Bc-QU8">
-                                <rect key="frame" x="295" y="222" width="132" height="32"/>
-                                <buttonCell key="cell" type="push" title="Preview Frame" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QOR-u4-Gob">
+                            <avPlayerView ambiguous="YES" misplaced="YES" controlsStyle="inline" translatesAutoresizingMaskIntoConstraints="NO" id="pNk-zT-Uej">
+                                <rect key="frame" x="20" y="20" width="440" height="111"/>
+                            </avPlayerView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZML-DJ-iww">
+                                <rect key="frame" x="329" y="222" width="121" height="32"/>
+                                <buttonCell key="cell" type="push" title="Show Details" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eZ0-Vl-1By">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="previewImageFrame:" target="XfG-lQ-9wD" id="e2B-4W-OHO"/>
+                                    <action selector="showInterestingFootage:" target="XfG-lQ-9wD" id="jRb-bF-UkS"/>
                                 </connections>
                             </button>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cr2-pa-A8T">
-                                <rect key="frame" x="29" y="11" width="187" height="123"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="181" id="nz3-5m-cad"/>
-                                </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="photo" id="pDv-wc-Dkg"/>
-                            </imageView>
-                            <avPlayerView translatesAutoresizingMaskIntoConstraints="NO" id="yx1-Nb-P08">
-                                <rect key="frame" x="231" y="14" width="230" height="118"/>
-                            </avPlayerView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="AL1-P1-2Rp" firstAttribute="trailing" secondItem="yx1-Nb-P08" secondAttribute="trailing" id="2td-lT-Bj9"/>
-                            <constraint firstItem="cr2-pa-A8T" firstAttribute="centerX" secondItem="qqc-hV-XZZ" secondAttribute="centerX" id="MNx-If-X9R"/>
-                            <constraint firstItem="cr2-pa-A8T" firstAttribute="top" secondItem="AL1-P1-2Rp" secondAttribute="bottom" constant="8" symbolic="YES" id="OO0-xi-uVz"/>
+                            <constraint firstItem="pNk-zT-Uej" firstAttribute="top" secondItem="AL1-P1-2Rp" secondAttribute="bottom" constant="8" id="FBe-Cv-a8x"/>
+                            <constraint firstAttribute="bottom" secondItem="pNk-zT-Uej" secondAttribute="bottom" constant="20" symbolic="YES" id="O8X-Ve-qNy"/>
                             <constraint firstItem="iyH-v8-Ldt" firstAttribute="baseline" secondItem="qqc-hV-XZZ" secondAttribute="baseline" id="OO9-fc-Adc"/>
-                            <constraint firstItem="yx1-Nb-P08" firstAttribute="leading" secondItem="cr2-pa-A8T" secondAttribute="trailing" constant="18" id="Smb-Cz-vuV"/>
-                            <constraint firstItem="cr2-pa-A8T" firstAttribute="bottom" secondItem="yx1-Nb-P08" secondAttribute="bottom" id="TC9-4Y-RaC"/>
+                            <constraint firstItem="ZML-DJ-iww" firstAttribute="baseline" secondItem="iyH-v8-Ldt" secondAttribute="baseline" id="R9i-Je-FuK"/>
+                            <constraint firstItem="pNk-zT-Uej" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="RqZ-un-Chr"/>
                             <constraint firstItem="qqc-hV-XZZ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="60" id="TDT-yk-8oS"/>
-                            <constraint firstItem="J7k-Bc-QU8" firstAttribute="leading" secondItem="iyH-v8-Ldt" secondAttribute="trailing" constant="12" symbolic="YES" id="X4w-Q8-h43"/>
-                            <constraint firstItem="yx1-Nb-P08" firstAttribute="top" secondItem="AL1-P1-2Rp" secondAttribute="bottom" constant="7" id="YnY-6U-G0i"/>
                             <constraint firstItem="AL1-P1-2Rp" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="Ze4-KJ-9vo"/>
                             <constraint firstItem="qqc-hV-XZZ" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="aH2-6W-5h6"/>
-                            <constraint firstItem="iyH-v8-Ldt" firstAttribute="baseline" secondItem="J7k-Bc-QU8" secondAttribute="baseline" id="d5n-fV-nMY"/>
-                            <constraint firstAttribute="bottom" secondItem="AL1-P1-2Rp" secondAttribute="bottom" constant="139" id="hc6-8R-d8Z"/>
+                            <constraint firstItem="ZML-DJ-iww" firstAttribute="leading" secondItem="iyH-v8-Ldt" secondAttribute="trailing" constant="46" id="bCF-Y6-bg4"/>
+                            <constraint firstItem="pNk-zT-Uej" firstAttribute="centerX" secondItem="AL1-P1-2Rp" secondAttribute="centerX" id="eKd-1y-F9d"/>
                             <constraint firstItem="iyH-v8-Ldt" firstAttribute="leading" secondItem="qqc-hV-XZZ" secondAttribute="trailing" constant="12" symbolic="YES" id="pct-Bk-aqJ"/>
                             <constraint firstItem="6N3-ST-tib" firstAttribute="top" secondItem="iyH-v8-Ldt" secondAttribute="bottom" constant="12" symbolic="YES" id="twr-24-T35"/>
-                            <constraint firstAttribute="bottom" secondItem="cr2-pa-A8T" secondAttribute="bottom" constant="14" id="xne-zK-9yt"/>
+                            <constraint firstAttribute="trailing" secondItem="pNk-zT-Uej" secondAttribute="trailing" constant="20" symbolic="YES" id="uw1-s9-xZv"/>
                             <constraint firstItem="6N3-ST-tib" firstAttribute="centerX" secondItem="iyH-v8-Ldt" secondAttribute="centerX" id="zXs-LH-rOE"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="fileDisplay" destination="AL1-P1-2Rp" id="bml-Lw-1Qr"/>
-                        <outlet property="playerView" destination="yx1-Nb-P08" id="s6r-qj-RrT"/>
-                        <outlet property="previewImageView" destination="cr2-pa-A8T" id="EsM-4a-jM1"/>
+                        <outlet property="playerView" destination="pNk-zT-Uej" id="ODf-pb-5nE"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
