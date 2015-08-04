@@ -37,7 +37,7 @@ class ViewController: NSViewController {
         let openPanel = NSOpenPanel()
         openPanel.allowsMultipleSelection = true
         openPanel.runModal()
-        self.videoURLs += openPanel.URLs as! [NSURL]
+        self.videoURLs += openPanel.URLs
         self.updateFileDisplay()
     }
     @IBAction func clearFiles(sender: AnyObject) {
@@ -72,7 +72,7 @@ class ViewController: NSViewController {
         if let processor = self.activeProcessor {
             processor.getPreviewFrame({
                 image in
-                println("about to show frame")
+                print("about to show frame")
                 self.previewImageView.image = NSImage(CGImage: image, size: self.previewImageView.frame.size)
             })
         }

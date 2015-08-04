@@ -160,6 +160,7 @@
 		011D896E1B69EB7D003D605D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Nick Merrill";
 				TargetAttributes = {
@@ -411,6 +412,7 @@
 				011D89941B69EB7D003D605D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		011D89951B69EB7D003D605D /* Build configuration list for PBXNativeTarget "AeroEditorTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +421,7 @@
 				011D89971B69EB7D003D605D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
