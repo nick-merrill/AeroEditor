@@ -26,18 +26,27 @@ class NMInterestingTimeRange: NSObject {
 
 
 class NMPixel: NSObject {
-    // These values are stored as floats on the interval [0, 1)
+    // These values are stored as floats on the interval [0, 1]
     let alpha: Float
     let red: Float
     let green: Float
     let blue: Float
     
-    init(alpha: UInt8, red: UInt8, green: UInt8, blue: UInt8) {
-        self.alpha = Float(alpha) / 256.0
-        self.red = Float(red) / 256.0
-        self.green = Float(green) / 256.0
-        self.blue = Float(blue) / 256.0
+    init(alphaF: Float, redF: Float, greenF: Float, blueF: Float) {
+        self.alpha = alphaF
+        self.red = redF
+        self.green = greenF
+        self.blue = blueF
     }
+    
+    convenience init(alpha: UInt8, red: UInt8, green: UInt8, blue: UInt8) {
+        self.init(
+            alphaF: Float(alpha) / 255.0,
+            redF: Float(red) / 255.0,
+            greenF: Float(green) / 255.0,
+            blueF: Float(blue) / 255.0)
+    }
+
     
     func differenceScore(pixel2: NMPixel) -> Float {
         return (abs(self.alpha - pixel2.alpha) +
@@ -59,7 +68,8 @@ class NMImageAnalyzer: NSObject {
     let pixelsWide: Int
     let pixelsHigh: Int
 
-    var intensityHistogram: [Int]
+    var intensityHistogram: [Int] = [Int]()
+    var averageGrid: [NMPixel?] = [NMPixel]()
     
     override var description: String {
         return "Size: \(self.pixelsWide)x\(self.pixelsHigh)\n" +
@@ -72,6 +82,7 @@ class NMImageAnalyzer: NSObject {
         self.imageData = UnsafePointer<UInt8>(uncastedData)
         self.pixelsWide = CGImageGetWidth(image)
         self.pixelsHigh = CGImageGetHeight(image)
+        super.init()
         
         // Create histogram
         let HISTOGRAM_NUM_BUCKETS = 30
@@ -83,7 +94,7 @@ class NMImageAnalyzer: NSObject {
         self.intensityHistogram = [Int](count: HISTOGRAM_NUM_BUCKETS, repeatedValue: 0)
         for var i = 0; i < self.pixelsHigh; i += HISTOGRAM_SKIP_PIXELS {
             for var j = 0; j < self.pixelsWide; j += HISTOGRAM_SKIP_PIXELS {
-                let pixel = self.pixelFromImageData(self.imageData, x: i, y: j)
+                let pixel = self.pixelAt(x: i, y: j)
                 let intensity = pixel.intensity()
                 var bucketIndex = 0
                 while bucketIndex < HISTOGRAM_NUM_BUCKETS - 1 {
@@ -100,14 +111,39 @@ class NMImageAnalyzer: NSObject {
         // Create average pixel value grid
         let GRID_WIDTH = 4
         let GRID_HEIGHT = 3
+        let GRID_SKIP_PIXELS = HISTOGRAM_SKIP_PIXELS
         let widthPerGridPanel = self.pixelsWide / GRID_WIDTH
         let heightPerGridPanel = self.pixelsHigh / GRID_HEIGHT
-        for var i in 0..<GRID_WIDTH {
-            for var j in 0..<GRID_HEIGHT {
-                // Calculate average pixel color within grid panel (i, j)
-                let widthOffset = i * widthPerGridPanel
-                let heightOffset = j * heightPerGridPanel
-                
+        self.averageGrid = [NMPixel?](count: GRID_WIDTH * GRID_HEIGHT, repeatedValue: nil)
+        for var m in 0..<GRID_HEIGHT {
+            for var n in 0..<GRID_WIDTH {
+                // Calculate average pixel color within grid panel (n, m)
+                let widthOffset = n * widthPerGridPanel
+                let heightOffset = m * heightPerGridPanel
+                var alphaSum: Float = 0
+                var redSum: Float = 0
+                var greenSum: Float = 0
+                var blueSum: Float = 0
+//                var intensitySum: Float = 0
+                var count: Int = 0
+                for var i = widthOffset; i < widthOffset + widthPerGridPanel; i += GRID_SKIP_PIXELS {
+                    for var j = heightOffset; j < heightOffset + heightPerGridPanel; j += GRID_SKIP_PIXELS {
+                        let pixel = self.pixelAt(x: i, y: j)
+                        alphaSum += pixel.alpha
+                        redSum += pixel.red
+                        greenSum += pixel.green
+                        blueSum += pixel.blue
+//                        intensitySum += pixel.intensity()
+                        count++
+                    }
+                }
+                var countF = Float(count)
+                let averagePixel = NMPixel(
+                    alphaF: alphaSum / countF,
+                    redF: redSum / countF,
+                    greenF: greenSum / countF,
+                    blueF: blueSum / countF)
+                self.averageGrid[m * GRID_WIDTH + n] = averagePixel
             }
         }
     }
@@ -145,7 +181,7 @@ class NMImageAnalyzer: NSObject {
         return context
     }
     
-    private func pixelFromImageData(imageData: UnsafePointer<UInt8>, x: Int, y: Int) -> NMPixel {
+    private func pixelAt(x x: Int, y: Int) -> NMPixel {
         assert(0 <= x && x < self.pixelsWide)
         assert(0 <= y && y < self.pixelsHigh)
         let offset = 4 * (y * self.pixelsWide + x)
