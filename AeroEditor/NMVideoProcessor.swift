@@ -79,9 +79,9 @@ class NMPixel: NSObject {
 
 let BYTES_PER_PIXEL = 4
 let HISTOGRAM_NUM_BUCKETS = 30
-let HISTOGRAM_SKIP_PIXELS = 4
-let GRID_WIDTH = 4
-let GRID_HEIGHT = 3
+let HISTOGRAM_SKIP_PIXELS = 10
+let GRID_WIDTH = 17
+let GRID_HEIGHT = 10
 let GRID_SKIP_PIXELS = HISTOGRAM_SKIP_PIXELS
 
 class NMImageAnalyzer: NSObject {
@@ -199,7 +199,7 @@ class NMImageAnalyzer: NSObject {
         // (CMYK, Grayscale, and so on) it will be converted over to the format
         // specified here by CGBitmapContextCreate.
         let context = CGBitmapContextCreate(bitmapData, pixelsWide, pixelsHigh, 8, bitmapBytesPerRow, colorSpace, bitmapInfo.rawValue)!
-        
+                
         // draw the image onto the context
         let rect = CGRect(x: 0, y: 0, width: pixelsWide, height: pixelsHigh)
         CGContextDrawImage(context, rect, img)
