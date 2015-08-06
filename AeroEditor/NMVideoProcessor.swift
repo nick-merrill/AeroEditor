@@ -284,9 +284,117 @@ class NMVideoFrame: NSObject {
 }
 
 
+class NMInterestingTimeAnalysisOperation: NSOperation {
+    let videoProcessor: NMVideoProcessor
+    let asset: AVAsset
+    let time1: CMTime
+    let time2: CMTime
+    
+    var failed = false
+    
+    init(fromAsset asset: AVAsset, time1: CMTime, time2: CMTime, videoProcessor: NMVideoProcessor) {
+        self.videoProcessor = videoProcessor
+        self.asset = asset
+        self.time1 = time1
+        self.time2 = time2
+    }
+    
+    override func main() {
+        if self.cancelled {
+            return
+        }
+        
+        do {
+            let frame1 = try NMVideoFrame(asset: asset, time: time1)
+            
+            if self.cancelled {
+                return
+            }
+            
+            let frame2 = try NMVideoFrame(asset: asset, time: time2)
+            
+            if self.cancelled {
+                return
+            }
+            
+            let diff = frame1.differenceScore(frame2)
+            
+            if self.cancelled {
+                return
+            }
+            
+            self.videoProcessor.interestingTimes.append(NMInterestingTimeRange(start: frame1.time!.value, duration: frame2.time!.value - frame1.time!.value, score: diff))
+            print("Analyzed Time: \(frame1.time!.seconds)s \t Score: \(diff)")
+        } catch {
+            print("Error processing \(self.name)")
+            self.failed = true
+        }
+    }
+}
+
+
+class NMOperationQueue: NSOperationQueue {
+    override init() {
+        super.init()
+//        self.maxConcurrentOperationCount = 2  // FIXME: for testing only
+    }
+    
+    lazy var operationsComplete = [NSOperation]()
+    
+    var onFinalOperationCompleted: (Void -> Void)?
+    var addOperationCallback: (NSOperation -> Void)?
+    
+    // Ensure operation is appended to completed operations array on completion
+    override func addOperation(op: NSOperation) {
+        op.completionBlock = {
+            if let presetCompletionBlock = op.completionBlock {
+                presetCompletionBlock()
+            }
+            self.operationsComplete.append(op)
+            if self.operations.count == 0 {
+                self.onFinalOperationCompleted?()
+            }
+        }
+        super.addOperation(op)
+        self.addOperationCallback?(op)
+    }
+}
+
+
+class NMVideoProcessorOperations {
+    var allOperations = [NSOperation]()
+    
+    lazy var interestingTimeAnalysisQueue: NMOperationQueue = {
+        let queue = NMOperationQueue()
+        queue.name = "interesting time analysis queue"
+        queue.qualityOfService = NSQualityOfService.Utility
+        queue.addOperationCallback = { (op: NSOperation) -> Void in
+            self.allOperations.append(op)
+        }
+        return queue
+        }()
+    
+    func progress() -> Double {
+        let operationsComplete = self.interestingTimeAnalysisQueue.operationsComplete.count
+        let operationsInProgress = self.interestingTimeAnalysisQueue.operations.count
+        let operationsTotal = operationsInProgress + operationsComplete
+        if operationsTotal == 0 {
+            return 1
+        }
+        return Double(operationsComplete) / Double(operationsTotal)
+    }
+    
+    func cancelAllOperations() {
+        self.interestingTimeAnalysisQueue.cancelAllOperations()
+    }
+}
+
+
 class NMVideoProcessor: NSObject {
     
     init (forFiles fileURLs:[NSURL]) {
+        super.init()
+        
         self.fileURLs = fileURLs
         for url in self.fileURLs {
             self.assets.append(AVAsset(URL: url))
@@ -295,9 +403,15 @@ class NMVideoProcessor: NSObject {
             self.primaryAsset = self.assets[0]
         }
         
+        self.reset()
+        
         // Creates main video track for composition
         self.compositionTrackVideo = self.composition.addMutableTrackWithMediaType(AVMediaTypeVideo, preferredTrackID: 0)
     }
+    
+    var completionHandler: (Void -> Void)?
+    
+    var operations = NMVideoProcessorOperations()
     
     var fileURLs = [NSURL]()
     var assets = [AVAsset]()
@@ -306,39 +420,58 @@ class NMVideoProcessor: NSObject {
     
     var interestingTimes = [NMInterestingTimeRange]()
     
-    var composition = AVMutableComposition()
-    var compositionTrackVideo:AVMutableCompositionTrack?
-    var currentCompositionTime = kCMTimeZero
+    var composition: AVMutableComposition = AVMutableComposition()
+    var compositionTrackVideo:AVMutableCompositionTrack? = nil
+    var currentCompositionTime: CMTime = kCMTimeZero
+    
+    func beginProcessing() {
+        self.operations.interestingTimeAnalysisQueue.onFinalOperationCompleted = {
+            print("sorting and inserting")
+            self.sortInterestingTimes()
+            self.insertFootageFromInterestingTimes()
+            self.completionHandler?()
+            self.operations.interestingTimeAnalysisQueue.onFinalOperationCompleted = nil
+        }
+        
+        self.analyzeInterestingTimes()
+//        self.sortInterestingTimes()
+//        self.insertFootageFromInterestingTimes()
+    }
+    
+    func reset() {
+        self.operations.cancelAllOperations()
+        
+        self.composition = AVMutableComposition()
+        self.compositionTrackVideo = nil
+        self.currentCompositionTime = kCMTimeZero
+    }
+    
+
     
     // Finds "interesting" times in all asset video tracks.
-    func analyzeInterestingTimes() {
+    private func analyzeInterestingTimes() {
         print("finding interesting times")
 
         if let asset = self.primaryAsset {
             let assetDuration = Int64(asset.duration.seconds * Double(VIDEO_TIME_SCALE))
             let COMPARE_DISTANCE: Int64 = 20
             for var t: Int64 = 0; t < assetDuration; t += COMPARE_DISTANCE {
-                do {
-                    let frame1 = try NMVideoFrame(asset: asset, time: CMTimeMake(t, VIDEO_TIME_SCALE))
-                    let frame2 = try NMVideoFrame(asset: asset, time: CMTimeMake(t + COMPARE_DISTANCE, VIDEO_TIME_SCALE))
-                    let diff = frame1.differenceScore(frame2)
-                    print("Time: \(Float(t) / Float(VIDEO_TIME_SCALE))s \t Score: \(diff)")
-                    
-                    self.interestingTimes.append(NMInterestingTimeRange(start: t, duration: COMPARE_DISTANCE, score: diff))
-                } catch {
-                    print("Error initializing NMVideoFrame")
-                }
+                let time1 = CMTimeMake(t, VIDEO_TIME_SCALE)
+                let time2 = CMTimeMake(t + COMPARE_DISTANCE, VIDEO_TIME_SCALE)
+                let op = NMInterestingTimeAnalysisOperation(fromAsset: asset, time1: time1, time2: time2, videoProcessor: self)
+                op.name = "interesting time analysis for times \(time1.seconds)s and \(time2.seconds)s"
+                self.operations.interestingTimeAnalysisQueue.addOperation(op)
             }
         }
     }
     
-    func sortInterestingTimes() {
+    private func sortInterestingTimes() {
         print("sorting interesting times")
         
         self.interestingTimes.sortInPlace({ $0.score > $1.score })
     }
     
-    func insertFootageFromInterestingTimes() {
+    private func insertFootageFromInterestingTimes() {
         if (self.primaryAsset == nil) {
             print("No primary asset to work with")
             return
@@ -357,16 +490,16 @@ class NMVideoProcessor: NSObject {
         }
     }
     
-    func getPreviewFrame(completionHandler: (CGImage)->Void) {
-        let imageGenerator = AVAssetImageGenerator(asset: self.composition)
-        
-        var actualTime = kCMTimeZero
-        do {
-            let image = try imageGenerator.copyCGImageAtTime(self.previewTime, actualTime: &actualTime)
-            completionHandler(image)
-            self.previewTime = CMTimeAdd(self.previewTime, CMTimeMake(1, 1))
-        } catch {
-            print("Error generating preview image")
-        }
-    }
+//    func getPreviewFrame(completionHandler: (CGImage)->Void) {
+//        let imageGenerator = AVAssetImageGenerator(asset: self.composition)
+//        
+//        var actualTime = kCMTimeZero
+//        do {
+//            let image = try imageGenerator.copyCGImageAtTime(self.previewTime, actualTime: &actualTime)
+//            completionHandler(image)
+//            self.previewTime = CMTimeAdd(self.previewTime, CMTimeMake(1, 1))
+//        } catch {
+//            print("Error generating preview image")
+//        }
+//    }
 }

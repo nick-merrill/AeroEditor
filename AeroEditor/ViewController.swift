@@ -15,10 +15,16 @@ class ViewController: NSViewController {
     @IBOutlet weak var fileDisplay: NSTextField!
     @IBOutlet weak var playerView: AVPlayerView!
     
-    lazy var detailWindowCtrl: DetailWindowController = self.storyboard!.instantiateControllerWithIdentifier("DetailWindowController") as! DetailWindowController
+    lazy var statusWindowCtrl: NSWindowController = self.storyboard!.instantiateControllerWithIdentifier("StatusWindowController") as! NSWindowController
+    lazy var statusViewCtrl: StatusViewController = self.statusWindowCtrl.contentViewController as! StatusViewController
+//    lazy var detailWindowCtrl: DetailWindowController = self.storyboard!.instantiateControllerWithIdentifier("DetailWindowController") as! DetailWindowController
     
     var videoURLs = [NSURL]()
-    var activeProcessor:NMVideoProcessor?
+    var activeProcessor:NMVideoProcessor? {
+        didSet {
+            statusViewCtrl.videoProcessor = activeProcessor
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +47,11 @@ class ViewController: NSViewController {
         self.videoURLs += openPanel.URLs
         self.updateFileDisplay()
     }
-    @IBAction func clearFiles(sender: AnyObject) {
+    @IBAction func reset(sender: AnyObject) {
         self.videoURLs.removeAll(keepCapacity: false)
         self.updateFileDisplay()
+        self.playerView.player = nil
+        self.activeProcessor?.reset()
     }
     
     func updateFileDisplay() {
@@ -61,17 +69,23 @@ class ViewController: NSViewController {
         let processor = NMVideoProcessor(forFiles: self.videoURLs)
         self.activeProcessor = processor
         
-        processor.analyzeInterestingTimes()
-        processor.sortInterestingTimes()
-        processor.insertFootageFromInterestingTimes()
-        
-        // Set preview video to monitor composition
-        let playerItem = AVPlayerItem(asset: processor.composition)
-        self.playerView.player = AVPlayer(playerItem: playerItem)
+        processor.completionHandler = {
+            // Set preview video to monitor composition
+            let playerItem = AVPlayerItem(asset: processor.composition)
+            self.playerView.player = AVPlayer(playerItem: playerItem)
+        }
+        processor.beginProcessing()
+    }
+    
+    // Shows window with processor queue status
+    @IBAction func showStatus(sender: AnyObject) {
+        statusViewCtrl.videoProcessor = self.activeProcessor
+        statusWindowCtrl.showWindow(self)
     }
     
     @IBAction func showInterestingFootage(sender: AnyObject) {
-        detailWindowCtrl.showWindow(self)
+//        detailWindowCtrl.showWindow(self)
+//        detailWindowCtrl.videoProcessor = self.activeProcessor
     }
     
 //    @IBAction func previewImageFrame(sender: AnyObject) {
