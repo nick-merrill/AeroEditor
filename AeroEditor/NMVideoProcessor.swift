@@ -284,13 +284,11 @@ class NMVideoFrame: NSObject {
 }
 
 
-class NMInterestingTimeAnalysisOperation: NSOperation {
+class NMInterestingTimeAnalysisOperation: NMOperation {
     let videoProcessor: NMVideoProcessor
     let asset: AVAsset
     let time1: CMTime
     let time2: CMTime
-    
-    var failed = false
     
     init(fromAsset asset: AVAsset, time1: CMTime, time2: CMTime, videoProcessor: NMVideoProcessor) {
         self.videoProcessor = videoProcessor
@@ -324,39 +322,11 @@ class NMInterestingTimeAnalysisOperation: NSOperation {
             }
             
             self.videoProcessor.interestingTimes.append(NMInterestingTimeRange(start: frame1.time!.value, duration: frame2.time!.value - frame1.time!.value, score: diff))
-            print("Analyzed Time: \(frame1.time!.seconds)s \t Score: \(diff)")
+//            print("Analyzed Time: \(frame1.time!.seconds)s \t Score: \(diff)")
         } catch {
             print("Error processing \(self.name)")
             self.failed = true
         }
-    }
-}
-
-
-class NMOperationQueue: NSOperationQueue {
-    override init() {
-        super.init()
-//        self.maxConcurrentOperationCount = 2  // FIXME: for testing only
-    }
-    
-    lazy var operationsComplete = [NSOperation]()
-    
-    var onFinalOperationCompleted: (Void -> Void)?
-    var addOperationCallback: (NSOperation -> Void)?
-    
-    // Ensure operation is appended to completed operations array on completion
-    override func addOperation(op: NSOperation) {
-        op.completionBlock = {
-            if let presetCompletionBlock = op.completionBlock {
-                presetCompletionBlock()
-            }
-            self.operationsComplete.append(op)
-            if self.operations.count == 0 {
-                self.onFinalOperationCompleted?()
-            }
-        }
-        super.addOperation(op)
-        self.addOperationCallback?(op)
     }
 }
 

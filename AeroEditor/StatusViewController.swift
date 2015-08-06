@@ -66,19 +66,7 @@ class StatusViewController: NSViewController, NSOutlineViewDataSource {
         if let operationItem = item as? NMInterestingTimeAnalysisOperation {
             switch tableColumn!.identifier {
             case "status":
-                if operationItem.failed {
-                    return "Failed"
-                } else if operationItem.executing {
-                    return "Processing"
-                } else if operationItem.finished {
-                    return "Finished"
-                } else if operationItem.ready {
-                    return "Queued"
-                } else if operationItem.dependencies.count > 0 {
-                    return "Queued (Pending Dependencies)"
-                } else {
-                    return "Unknown"
-                }
+                return operationItem.statusDescription()
             case "description":
                 return operationItem.name
             default:
