@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.AVKitIBPlugin" version="8164.2"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8164.2"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -322,28 +323,52 @@
             </objects>
             <point key="canvasLocation" x="1231" y="750"/>
         </scene>
-        <!--View Controller-->
+        <!--Preview View Controller-->
         <scene sceneID="S8v-Qt-bcM">
             <objects>
-                <viewController id="wOE-kO-i9K" sceneMemberID="viewController">
+                <viewController id="wOE-kO-i9K" customClass="PreviewViewController" customModule="AeroEditor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="vyx-ln-Tl1">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="421"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <avPlayerView controlsStyle="inline" translatesAutoresizingMaskIntoConstraints="NO" id="pNk-zT-Uej">
+                                <rect key="frame" x="20" y="154" width="440" height="247"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="pNk-zT-Uej" secondAttribute="height" multiplier="1920:1080" id="Fec-PW-WEf"/>
+                                </constraints>
+                            </avPlayerView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="JBt-d4-FJR" customClass="CPTGraphHostingView">
+                                <rect key="frame" x="20" y="20" width="440" height="126"/>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="pNk-zT-Uej" firstAttribute="top" secondItem="vyx-ln-Tl1" secondAttribute="top" constant="20" id="CQV-1M-AdQ"/>
+                            <constraint firstItem="JBt-d4-FJR" firstAttribute="top" secondItem="pNk-zT-Uej" secondAttribute="bottom" constant="8" symbolic="YES" id="OfO-En-SHY"/>
+                            <constraint firstItem="JBt-d4-FJR" firstAttribute="leading" secondItem="vyx-ln-Tl1" secondAttribute="leading" constant="20" id="Rja-NE-KOR"/>
+                            <constraint firstAttribute="trailing" secondItem="pNk-zT-Uej" secondAttribute="trailing" constant="20" id="dRj-MZ-4td"/>
+                            <constraint firstItem="pNk-zT-Uej" firstAttribute="leading" secondItem="vyx-ln-Tl1" secondAttribute="leading" constant="20" id="ojf-Xs-LRe"/>
+                            <constraint firstAttribute="bottom" secondItem="JBt-d4-FJR" secondAttribute="bottom" constant="20" symbolic="YES" id="tR0-8e-VEp"/>
+                            <constraint firstAttribute="trailing" secondItem="JBt-d4-FJR" secondAttribute="trailing" constant="20" id="ufe-st-6ai"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="graphHostingView" destination="JBt-d4-FJR" id="XKe-dG-Wed"/>
+                        <outlet property="playerView" destination="pNk-zT-Uej" id="mTs-FM-EOu"/>
+                    </connections>
                 </viewController>
                 <customObject id="3en-Hj-cQ7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="650" y="750"/>
+            <point key="canvasLocation" x="650" y="825.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="AeroEditor" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" misplaced="YES" id="m2S-Jp-Qdl">
+                    <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qqc-hV-XZZ">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qqc-hV-XZZ">
                                 <rect key="frame" x="54" y="222" width="136" height="32"/>
                                 <buttonCell key="cell" type="push" title="Add Video Files" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rvy-5X-H3m">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -353,7 +378,7 @@
                                     <action selector="addFiles:" target="XfG-lQ-9wD" id="hFU-gD-BWX"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6N3-ST-tib">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6N3-ST-tib">
                                 <rect key="frame" x="164" y="189" width="129" height="32"/>
                                 <buttonCell key="cell" type="push" title="Process Video" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="k57-zc-mRC">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -363,7 +388,7 @@
                                     <action selector="process:" target="XfG-lQ-9wD" id="saY-Yg-pVh"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iyH-v8-Ldt">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iyH-v8-Ldt">
                                 <rect key="frame" x="190" y="222" width="76" height="32"/>
                                 <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ZBW-1i-osy">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -373,12 +398,9 @@
                                     <action selector="reset:" target="XfG-lQ-9wD" id="2oW-74-GQg"/>
                                 </connections>
                             </button>
-                            <avPlayerView misplaced="YES" controlsStyle="inline" translatesAutoresizingMaskIntoConstraints="NO" id="pNk-zT-Uej">
-                                <rect key="frame" x="20" y="20" width="440" height="111"/>
-                            </avPlayerView>
-                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZML-DJ-iww">
-                                <rect key="frame" x="300" y="222" width="121" height="32"/>
-                                <buttonCell key="cell" type="push" title="Show Details" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eZ0-Vl-1By">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZML-DJ-iww">
+                                <rect key="frame" x="300" y="222" width="127" height="32"/>
+                                <buttonCell key="cell" type="push" title="Show Preview" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eZ0-Vl-1By">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -397,7 +419,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rJE-PO-0bw">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rJE-PO-0bw">
                                 <rect key="frame" x="293" y="189" width="80" height="32"/>
                                 <buttonCell key="cell" type="push" title="Status" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3uK-65-It0">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -411,28 +433,22 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="AL1-P1-2Rp" secondAttribute="trailing" constant="20" symbolic="YES" id="04n-c0-0bn"/>
                             <constraint firstItem="rJE-PO-0bw" firstAttribute="centerY" secondItem="6N3-ST-tib" secondAttribute="centerY" id="Lvo-91-vXa"/>
-                            <constraint firstItem="pNk-zT-Uej" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="MFA-NI-XVM"/>
                             <constraint firstItem="iyH-v8-Ldt" firstAttribute="baseline" secondItem="qqc-hV-XZZ" secondAttribute="baseline" id="OO9-fc-Adc"/>
                             <constraint firstItem="ZML-DJ-iww" firstAttribute="baseline" secondItem="iyH-v8-Ldt" secondAttribute="baseline" id="R9i-Je-FuK"/>
-                            <constraint firstItem="pNk-zT-Uej" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="RqZ-un-Chr"/>
                             <constraint firstItem="AL1-P1-2Rp" firstAttribute="top" secondItem="6N3-ST-tib" secondAttribute="bottom" constant="8" id="Sgn-1m-Rkl"/>
                             <constraint firstItem="qqc-hV-XZZ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="60" id="TDT-yk-8oS"/>
                             <constraint firstItem="rJE-PO-0bw" firstAttribute="leading" secondItem="6N3-ST-tib" secondAttribute="trailing" constant="12" symbolic="YES" id="Zd7-c4-r2F"/>
                             <constraint firstItem="AL1-P1-2Rp" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="Ze4-KJ-9vo"/>
                             <constraint firstItem="qqc-hV-XZZ" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="aH2-6W-5h6"/>
                             <constraint firstItem="ZML-DJ-iww" firstAttribute="leading" secondItem="iyH-v8-Ldt" secondAttribute="trailing" constant="46" id="bCF-Y6-bg4"/>
-                            <constraint firstAttribute="bottom" secondItem="pNk-zT-Uej" secondAttribute="bottom" constant="20" id="mHL-1T-w3c"/>
                             <constraint firstItem="iyH-v8-Ldt" firstAttribute="leading" secondItem="qqc-hV-XZZ" secondAttribute="trailing" constant="12" symbolic="YES" id="pct-Bk-aqJ"/>
                             <constraint firstItem="iyH-v8-Ldt" firstAttribute="centerY" secondItem="qqc-hV-XZZ" secondAttribute="centerY" id="qpe-jd-tSb"/>
                             <constraint firstItem="6N3-ST-tib" firstAttribute="top" secondItem="iyH-v8-Ldt" secondAttribute="bottom" constant="12" symbolic="YES" id="twr-24-T35"/>
-                            <constraint firstAttribute="trailing" secondItem="pNk-zT-Uej" secondAttribute="trailing" constant="20" symbolic="YES" id="uw1-s9-xZv"/>
-                            <constraint firstItem="pNk-zT-Uej" firstAttribute="top" secondItem="AL1-P1-2Rp" secondAttribute="bottom" constant="8" id="yo6-os-Mu6"/>
                             <constraint firstItem="6N3-ST-tib" firstAttribute="centerX" secondItem="iyH-v8-Ldt" secondAttribute="centerX" id="zXs-LH-rOE"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="fileDisplay" destination="AL1-P1-2Rp" id="bml-Lw-1Qr"/>
-                        <outlet property="playerView" destination="pNk-zT-Uej" id="ODf-pb-5nE"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

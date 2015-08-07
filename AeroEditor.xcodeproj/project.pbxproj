@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		010C228A1B718EF600645D7D /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010C22891B718EF600645D7D /* StatusViewController.swift */; };
 		010C228E1B73283700645D7D /* NMOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010C228D1B73283700645D7D /* NMOperations.swift */; };
+		010C229D1B74FE0000645D7D /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010C229C1B74FE0000645D7D /* PreviewViewController.swift */; };
+		010C22B91B7519F400645D7D /* CorePlot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010C22AE1B7519E400645D7D /* CorePlot.framework */; };
+		010C22BB1B751A5900645D7D /* CorePlot.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 010C22AE1B7519E400645D7D /* CorePlot.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		010C22BD1B751A9A00645D7D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010C22BC1B751A9A00645D7D /* QuartzCore.framework */; };
 		011D897C1B69EB7D003D605D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D897B1B69EB7D003D605D /* AppDelegate.swift */; };
 		011D897E1B69EB7D003D605D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D897D1B69EB7D003D605D /* ViewController.swift */; };
 		011D89801B69EB7D003D605D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 011D897F1B69EB7D003D605D /* Images.xcassets */; };
@@ -20,6 +24,48 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		010C22AD1B7519E400645D7D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 010C22A11B7519E300645D7D /* CorePlot.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = "CorePlot Mac";
+		};
+		010C22AF1B7519E400645D7D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 010C22A11B7519E300645D7D /* CorePlot.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0730F600109492D800E95162;
+			remoteInfo = "UnitTests Mac";
+		};
+		010C22B11B7519E400645D7D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 010C22A11B7519E300645D7D /* CorePlot.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C38A09781A46185200D45436;
+			remoteInfo = "CorePlot iOS";
+		};
+		010C22B31B7519E400645D7D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 010C22A11B7519E300645D7D /* CorePlot.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C38A09821A46185300D45436;
+			remoteInfo = "UnitTests iOS";
+		};
+		010C22B51B7519E400645D7D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 010C22A11B7519E300645D7D /* CorePlot.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C38A09BA1A4619A900D45436;
+			remoteInfo = "CorePlot-CocoaTouch";
+		};
+		010C22B71B7519E400645D7D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 010C22A11B7519E300645D7D /* CorePlot.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C38A09C41A4619A900D45436;
+			remoteInfo = "CorePlot-CocoaTouchTests";
+		};
 		011D89891B69EB7D003D605D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 011D896E1B69EB7D003D605D /* Project object */;
@@ -29,9 +75,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		010C22BA1B751A3B00645D7D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				010C22BB1B751A5900645D7D /* CorePlot.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		010C22891B718EF600645D7D /* StatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
 		010C228D1B73283700645D7D /* NMOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NMOperations.swift; sourceTree = "<group>"; };
+		010C229C1B74FE0000645D7D /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		010C22A01B75177900645D7D /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		010C22A11B7519E300645D7D /* CorePlot.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CorePlot.xcodeproj; path = "../../tools/core-plot-release-2.0/framework/CorePlot.xcodeproj"; sourceTree = "<group>"; };
+		010C22BC1B751A9A00645D7D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		011D89761B69EB7D003D605D /* AeroEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AeroEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		011D897A1B69EB7D003D605D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		011D897B1B69EB7D003D605D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +116,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				010C22BD1B751A9A00645D7D /* QuartzCore.framework in Frameworks */,
+				010C22B91B7519F400645D7D /* CorePlot.framework in Frameworks */,
 				011D899B1B69F6BE003D605D /* AVFoundation.framework in Frameworks */,
 				FE6F00FC5142C3681E369A0F /* libPods-AeroEditor.a in Frameworks */,
 			);
@@ -68,9 +133,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		010C22A21B7519E300645D7D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				010C22AE1B7519E400645D7D /* CorePlot.framework */,
+				010C22B01B7519E400645D7D /* UnitTests.xctest */,
+				010C22B21B7519E400645D7D /* CorePlot.framework */,
+				010C22B41B7519E400645D7D /* UnitTests iOS.xctest */,
+				010C22B61B7519E400645D7D /* libCorePlot-CocoaTouch.a */,
+				010C22B81B7519E400645D7D /* CorePlot-CocoaTouchTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		011D896D1B69EB7D003D605D = {
 			isa = PBXGroup;
 			children = (
+				010C22A11B7519E300645D7D /* CorePlot.xcodeproj */,
 				011D899A1B69F6BE003D605D /* AVFoundation.framework */,
 				011D89781B69EB7D003D605D /* AeroEditor */,
 				011D898B1B69EB7D003D605D /* AeroEditorTests */,
@@ -97,6 +176,7 @@
 				011D897D1B69EB7D003D605D /* ViewController.swift */,
 				011D897F1B69EB7D003D605D /* Images.xcassets */,
 				011D89811B69EB7D003D605D /* Main.storyboard */,
+				010C229C1B74FE0000645D7D /* PreviewViewController.swift */,
 				011D89981B69F4E0003D605D /* NMVideoProcessor.swift */,
 				010C228D1B73283700645D7D /* NMOperations.swift */,
 				011D89791B69EB7D003D605D /* Supporting Files */,
@@ -108,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				011D897A1B69EB7D003D605D /* Info.plist */,
+				010C22A01B75177900645D7D /* BridgingHeader.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -132,6 +213,7 @@
 		2DB3C7DB5BE2D668000EE2E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				010C22BC1B751A9A00645D7D /* QuartzCore.framework */,
 				0627182E805C19FE8237E18F /* libPods-AeroEditor.a */,
 			);
 			name = Frameworks;
@@ -155,6 +237,7 @@
 			buildPhases = (
 				843803AF7067FCCDFC740A89 /* Check Pods Manifest.lock */,
 				011D89721B69EB7D003D605D /* Sources */,
+				010C22BA1B751A3B00645D7D /* CopyFiles */,
 				011D89731B69EB7D003D605D /* Frameworks */,
 				011D89741B69EB7D003D605D /* Resources */,
 				427C9D0B5DF5CAC83739491A /* Copy Pods Resources */,
@@ -217,6 +300,12 @@
 			mainGroup = 011D896D1B69EB7D003D605D;
 			productRefGroup = 011D89771B69EB7D003D605D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 010C22A21B7519E300645D7D /* Products */;
+					ProjectRef = 010C22A11B7519E300645D7D /* CorePlot.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				011D89751B69EB7D003D605D /* AeroEditor */,
@@ -224,6 +313,51 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		010C22AE1B7519E400645D7D /* CorePlot.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CorePlot.framework;
+			remoteRef = 010C22AD1B7519E400645D7D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		010C22B01B7519E400645D7D /* UnitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = UnitTests.xctest;
+			remoteRef = 010C22AF1B7519E400645D7D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		010C22B21B7519E400645D7D /* CorePlot.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CorePlot.framework;
+			remoteRef = 010C22B11B7519E400645D7D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		010C22B41B7519E400645D7D /* UnitTests iOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "UnitTests iOS.xctest";
+			remoteRef = 010C22B31B7519E400645D7D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		010C22B61B7519E400645D7D /* libCorePlot-CocoaTouch.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libCorePlot-CocoaTouch.a";
+			remoteRef = 010C22B51B7519E400645D7D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		010C22B81B7519E400645D7D /* CorePlot-CocoaTouchTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "CorePlot-CocoaTouchTests.xctest";
+			remoteRef = 010C22B71B7519E400645D7D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		011D89741B69EB7D003D605D /* Resources */ = {
@@ -287,6 +421,7 @@
 				011D89991B69F4E0003D605D /* NMVideoProcessor.swift in Sources */,
 				010C228E1B73283700645D7D /* NMOperations.swift in Sources */,
 				011D897C1B69EB7D003D605D /* AppDelegate.swift in Sources */,
+				010C229D1B74FE0000645D7D /* PreviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +547,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "co.nickmerrill.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = AeroEditor/BridgingHeader.h;
 			};
 			name = Debug;
 		};
@@ -426,6 +562,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "co.nickmerrill.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = AeroEditor/BridgingHeader.h;
 			};
 			name = Release;
 		};

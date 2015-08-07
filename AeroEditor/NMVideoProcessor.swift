@@ -53,10 +53,12 @@ class NMPixel: NSObject {
 
     
     func differenceScore(pixel2: NMPixel) -> Float {
-        return (abs(self.alpha - pixel2.alpha) +
-            abs(self.red - pixel2.red) +
-            abs(self.green - pixel2.green) +
-            abs(self.blue - pixel2.blue)) / 4.0
+        let alphaDiff = abs(self.alpha - pixel2.alpha)
+        let redDiff = abs(self.red - pixel2.red)
+        let greenDiff = abs(self.green - pixel2.green)
+        let blueDiff = abs(self.blue - pixel2.blue)
+        let sumDiff = alphaDiff + redDiff + greenDiff + blueDiff
+        return sumDiff / 4.0
     }
     
     func intensity() -> Float {

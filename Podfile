@@ -2,10 +2,8 @@
 # platform :ios, '6.0'
 
 target 'AeroEditor' do
-    pod 'CorePlot', '~> 1.6'
 end
 
 target 'AeroEditorTests' do
-
 end
 
