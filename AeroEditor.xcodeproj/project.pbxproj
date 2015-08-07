@@ -16,6 +16,7 @@
 		011D898F1B69EB7D003D605D /* AeroEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D898E1B69EB7D003D605D /* AeroEditorTests.swift */; };
 		011D89991B69F4E0003D605D /* NMVideoProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D89981B69F4E0003D605D /* NMVideoProcessor.swift */; };
 		011D899B1B69F6BE003D605D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011D899A1B69F6BE003D605D /* AVFoundation.framework */; };
+		FE6F00FC5142C3681E369A0F /* libPods-AeroEditor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0627182E805C19FE8237E18F /* libPods-AeroEditor.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,9 @@
 		011D898E1B69EB7D003D605D /* AeroEditorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeroEditorTests.swift; sourceTree = "<group>"; };
 		011D89981B69F4E0003D605D /* NMVideoProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NMVideoProcessor.swift; sourceTree = "<group>"; };
 		011D899A1B69F6BE003D605D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		0627182E805C19FE8237E18F /* libPods-AeroEditor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AeroEditor.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7968F79CAB714195CA78B91D /* Pods-AeroEditor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AeroEditor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AeroEditor/Pods-AeroEditor.debug.xcconfig"; sourceTree = "<group>"; };
+		AA8F2295D1977F893658CEDE /* Pods-AeroEditor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AeroEditor.release.xcconfig"; path = "Pods/Target Support Files/Pods-AeroEditor/Pods-AeroEditor.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +54,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				011D899B1B69F6BE003D605D /* AVFoundation.framework in Frameworks */,
+				FE6F00FC5142C3681E369A0F /* libPods-AeroEditor.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +75,8 @@
 				011D89781B69EB7D003D605D /* AeroEditor */,
 				011D898B1B69EB7D003D605D /* AeroEditorTests */,
 				011D89771B69EB7D003D605D /* Products */,
+				B1AFA91591D79198D5DBB629 /* Pods */,
+				2DB3C7DB5BE2D668000EE2E1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,6 +129,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		2DB3C7DB5BE2D668000EE2E1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0627182E805C19FE8237E18F /* libPods-AeroEditor.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B1AFA91591D79198D5DBB629 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7968F79CAB714195CA78B91D /* Pods-AeroEditor.debug.xcconfig */,
+				AA8F2295D1977F893658CEDE /* Pods-AeroEditor.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -129,9 +153,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 011D89921B69EB7D003D605D /* Build configuration list for PBXNativeTarget "AeroEditor" */;
 			buildPhases = (
+				843803AF7067FCCDFC740A89 /* Check Pods Manifest.lock */,
 				011D89721B69EB7D003D605D /* Sources */,
 				011D89731B69EB7D003D605D /* Frameworks */,
 				011D89741B69EB7D003D605D /* Resources */,
+				427C9D0B5DF5CAC83739491A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -217,6 +243,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		427C9D0B5DF5CAC83739491A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AeroEditor/Pods-AeroEditor-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		843803AF7067FCCDFC740A89 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		011D89721B69EB7D003D605D /* Sources */ = {
@@ -344,6 +403,7 @@
 		};
 		011D89931B69EB7D003D605D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7968F79CAB714195CA78B91D /* Pods-AeroEditor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
@@ -357,6 +417,7 @@
 		};
 		011D89941B69EB7D003D605D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA8F2295D1977F893658CEDE /* Pods-AeroEditor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Developer ID Application";

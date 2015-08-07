@@ -185,6 +185,7 @@
                         <windowPositionMask key="initialPositionMask" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="514" y="617" width="480" height="258"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <value key="minSize" type="size" width="480" height="258"/>
                     </window>
                     <connections>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
@@ -192,12 +193,12 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="244"/>
+            <point key="canvasLocation" x="75" y="270"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="sPL-vK-pdr">
             <objects>
-                <windowController storyboardIdentifier="DetailWindowController" id="Vud-jO-ZSB" customClass="DetailWindowController" customModule="AeroEditor" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="DetailWindowController" id="Vud-jO-ZSB" sceneMemberID="viewController">
                     <window key="window" title="Details" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Cep-0K-BO3">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -210,7 +211,7 @@
                 </windowController>
                 <customObject id="D14-3B-koJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="650" y="276"/>
+            <point key="canvasLocation" x="650" y="270"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="omN-hs-NTO">
@@ -248,7 +249,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" multipleSelection="NO" autosaveColumns="NO" headerView="3lu-Tl-GtY" indentationPerLevel="16" outlineTableColumn="Iky-Y1-2hb" id="H2m-Ba-iuc">
-                                            <rect key="frame" x="0.0" y="0.0" width="440" height="218"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="440" height="19"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -319,7 +320,7 @@
                 </viewController>
                 <customObject id="xGb-u3-XDI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1231" y="722"/>
+            <point key="canvasLocation" x="1231" y="750"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="S8v-Qt-bcM">
@@ -389,7 +390,6 @@
                                 <rect key="frame" x="18" y="139" width="445" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="INu-9d-NBP"/>
-                                    <constraint firstAttribute="width" constant="441" id="JLx-4o-izd"/>
                                 </constraints>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" placeholderString="No video files chosen" id="aO3-PJ-drT">
                                     <font key="font" metaFont="system"/>
@@ -409,11 +409,12 @@
                             </button>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="AL1-P1-2Rp" secondAttribute="trailing" constant="20" symbolic="YES" id="04n-c0-0bn"/>
+                            <constraint firstItem="rJE-PO-0bw" firstAttribute="centerY" secondItem="6N3-ST-tib" secondAttribute="centerY" id="Lvo-91-vXa"/>
                             <constraint firstItem="pNk-zT-Uej" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="MFA-NI-XVM"/>
                             <constraint firstItem="iyH-v8-Ldt" firstAttribute="baseline" secondItem="qqc-hV-XZZ" secondAttribute="baseline" id="OO9-fc-Adc"/>
                             <constraint firstItem="ZML-DJ-iww" firstAttribute="baseline" secondItem="iyH-v8-Ldt" secondAttribute="baseline" id="R9i-Je-FuK"/>
                             <constraint firstItem="pNk-zT-Uej" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="RqZ-un-Chr"/>
-                            <constraint firstItem="AL1-P1-2Rp" firstAttribute="top" secondItem="rJE-PO-0bw" secondAttribute="bottom" constant="8" symbolic="YES" id="SGC-WJ-vHU"/>
                             <constraint firstItem="AL1-P1-2Rp" firstAttribute="top" secondItem="6N3-ST-tib" secondAttribute="bottom" constant="8" id="Sgn-1m-Rkl"/>
                             <constraint firstItem="qqc-hV-XZZ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="60" id="TDT-yk-8oS"/>
                             <constraint firstItem="rJE-PO-0bw" firstAttribute="leading" secondItem="6N3-ST-tib" secondAttribute="trailing" constant="12" symbolic="YES" id="Zd7-c4-r2F"/>
@@ -421,7 +422,6 @@
                             <constraint firstItem="qqc-hV-XZZ" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="aH2-6W-5h6"/>
                             <constraint firstItem="ZML-DJ-iww" firstAttribute="leading" secondItem="iyH-v8-Ldt" secondAttribute="trailing" constant="46" id="bCF-Y6-bg4"/>
                             <constraint firstAttribute="bottom" secondItem="pNk-zT-Uej" secondAttribute="bottom" constant="20" id="mHL-1T-w3c"/>
-                            <constraint firstItem="AL1-P1-2Rp" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="mdg-ka-9qI"/>
                             <constraint firstItem="iyH-v8-Ldt" firstAttribute="leading" secondItem="qqc-hV-XZZ" secondAttribute="trailing" constant="12" symbolic="YES" id="pct-Bk-aqJ"/>
                             <constraint firstItem="iyH-v8-Ldt" firstAttribute="centerY" secondItem="qqc-hV-XZZ" secondAttribute="centerY" id="qpe-jd-tSb"/>
                             <constraint firstItem="6N3-ST-tib" firstAttribute="top" secondItem="iyH-v8-Ldt" secondAttribute="bottom" constant="12" symbolic="YES" id="twr-24-T35"/>
