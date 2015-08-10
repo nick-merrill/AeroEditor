@@ -56,8 +56,7 @@ class PreviewViewController: NSViewController, CPTBarPlotDataSource, CPTBarPlotD
         let graph = CPTXYGraph(frame: graphHostingView.bounds, xScaleType: CPTScaleType.DateTime, yScaleType: CPTScaleType.Linear)
         graph.plotAreaFrame?.masksToBorder = false
         graphHostingView.hostedGraph = graph
-        graph.title = "my title"
-        graph.applyTheme(CPTTheme(named: kCPTPlainBlackTheme))
+//        graph.applyTheme(CPTTheme(named: kCPTPlainBlackTheme))
         
         let plotSpace = graph.defaultPlotSpace as! CPTXYPlotSpace
         plotSpace.xRange = CPTPlotRange(locationDecimal: CPTDecimalFromFloat(0), lengthDecimal: CPTDecimalFromFloat(1))

@@ -11,8 +11,8 @@ import AVFoundation
 import QuartzCore
 import CoreImage
 
-let VIDEO_TIME_SCALE:Int32 = 20
-let COMPARE_DISTANCE: Int64 = 10
+let VIDEO_TIME_SCALE:Int32 = 100
+let COMPARE_DISTANCE: Int64 = 25
 
 // Used to indicate time ranges of varying levels of interesting footage.
 class NMInterestingTimeRange: NSObject {
@@ -400,15 +400,17 @@ class NMVideoProcessor: NSObject {
     func beginProcessing() {
         self.operations.interestingTimeAnalysisQueue.onFinalOperationCompleted = {
             print("sorting and inserting")
-            self.sortInterestingTimes()
-            self.insertFootageFromInterestingTimes()
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.sortInterestingTimes()
+                self.insertFootageFromInterestingTimes()
                 self.completionHandler?()
             })
             self.operations.interestingTimeAnalysisQueue.onFinalOperationCompleted = nil
         }
         
-        self.analyzeInterestingTimes()
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            self.analyzeInterestingTimes()
+        }
     }
     
     func reset() {
