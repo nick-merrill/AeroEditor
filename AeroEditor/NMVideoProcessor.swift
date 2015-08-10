@@ -11,7 +11,8 @@ import AVFoundation
 import QuartzCore
 import CoreImage
 
-let VIDEO_TIME_SCALE:Int32 = 10
+let VIDEO_TIME_SCALE:Int32 = 20
+let COMPARE_DISTANCE: Int64 = 20
 
 // Used to indicate time ranges of varying levels of interesting footage.
 class NMInterestingTimeRange: NSObject {
@@ -401,13 +402,13 @@ class NMVideoProcessor: NSObject {
             print("sorting and inserting")
             self.sortInterestingTimes()
             self.insertFootageFromInterestingTimes()
-            self.completionHandler?()
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.completionHandler?()
+            })
             self.operations.interestingTimeAnalysisQueue.onFinalOperationCompleted = nil
         }
         
         self.analyzeInterestingTimes()
-//        self.sortInterestingTimes()
-//        self.insertFootageFromInterestingTimes()
     }
     
     func reset() {
@@ -426,7 +427,6 @@ class NMVideoProcessor: NSObject {
 
         if let asset = self.primaryAsset {
             let assetDuration = Int64(asset.duration.seconds * Double(VIDEO_TIME_SCALE))
-            let COMPARE_DISTANCE: Int64 = 20
             for var t: Int64 = 0; t < assetDuration; t += COMPARE_DISTANCE {
                 let time1 = CMTimeMake(t, VIDEO_TIME_SCALE)
                 let time2 = CMTimeMake(t + COMPARE_DISTANCE, VIDEO_TIME_SCALE)
@@ -440,7 +440,8 @@ class NMVideoProcessor: NSObject {
     private func sortInterestingTimes() {
         print("sorting interesting times")
         
-        self.interestingTimes.sortInPlace({ $0.score > $1.score })
+//        self.interestingTimes.sortInPlace({ $0.score > $1.score })
+        self.interestingTimes.sortInPlace({ $0.timeRange.start.seconds < $1.timeRange.start.seconds })
     }
     
     private func insertFootageFromInterestingTimes() {

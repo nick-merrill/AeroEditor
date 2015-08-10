@@ -199,8 +199,8 @@
         <!--Window Controller-->
         <scene sceneID="sPL-vK-pdr">
             <objects>
-                <windowController storyboardIdentifier="DetailWindowController" id="Vud-jO-ZSB" sceneMemberID="viewController">
-                    <window key="window" title="Details" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Cep-0K-BO3">
+                <windowController storyboardIdentifier="PreviewWindowController" id="Vud-jO-ZSB" sceneMemberID="viewController">
+                    <window key="window" title="Preview" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Cep-0K-BO3">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="294" y="362" width="480" height="270"/>
@@ -340,6 +340,16 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="JBt-d4-FJR" customClass="CPTGraphHostingView">
                                 <rect key="frame" x="20" y="20" width="440" height="126"/>
                             </customView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xpc-bL-Hcb">
+                                <rect key="frame" x="392" y="393" width="94" height="32"/>
+                                <buttonCell key="cell" type="push" title="Displace" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oiq-vj-PUg">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="displacePlot:" target="wOE-kO-i9K" id="e3G-V0-QRO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="pNk-zT-Uej" firstAttribute="top" secondItem="vyx-ln-Tl1" secondAttribute="top" constant="20" id="CQV-1M-AdQ"/>
@@ -403,10 +413,10 @@
                                 <buttonCell key="cell" type="push" title="Show Preview" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eZ0-Vl-1By">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <connections>
+                                        <action selector="showPreview:" target="XfG-lQ-9wD" id="401-d9-sMP"/>
+                                    </connections>
                                 </buttonCell>
-                                <connections>
-                                    <action selector="showInterestingFootage:" target="XfG-lQ-9wD" id="jRb-bF-UkS"/>
-                                </connections>
                             </button>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AL1-P1-2Rp">
                                 <rect key="frame" x="18" y="139" width="445" height="49"/>

@@ -13,23 +13,24 @@ import AVFoundation
 class ViewController: NSViewController {
     
     @IBOutlet weak var fileDisplay: NSTextField!
-    @IBOutlet weak var playerView: AVPlayerView!
     
     lazy var statusWindowCtrl: NSWindowController = self.storyboard!.instantiateControllerWithIdentifier("StatusWindowController") as! NSWindowController
     lazy var statusViewCtrl: StatusViewController = self.statusWindowCtrl.contentViewController as! StatusViewController
-//    lazy var detailWindowCtrl: DetailWindowController = self.storyboard!.instantiateControllerWithIdentifier("DetailWindowController") as! DetailWindowController
+    lazy var previewWindowCtrl: NSWindowController = self.storyboard!.instantiateControllerWithIdentifier("PreviewWindowController") as! NSWindowController
+    lazy var previewViewCtrl: PreviewViewController = self.previewWindowCtrl.contentViewController as! PreviewViewController
     
     var videoURLs = [NSURL]()
     var activeProcessor:NMVideoProcessor? {
         didSet {
             statusViewCtrl.videoProcessor = activeProcessor
+            previewViewCtrl.videoProcessor = activeProcessor
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        previewWindowCtrl.showWindow(self)
     }
 
     override var representedObject: AnyObject? {
@@ -50,7 +51,7 @@ class ViewController: NSViewController {
     @IBAction func reset(sender: AnyObject) {
         self.videoURLs.removeAll(keepCapacity: false)
         self.updateFileDisplay()
-        self.playerView.player = nil
+        self.previewViewCtrl.reset()
         self.activeProcessor?.reset()
     }
     
@@ -71,22 +72,22 @@ class ViewController: NSViewController {
         
         processor.completionHandler = {
             // Set preview video to monitor composition
-            let playerItem = AVPlayerItem(asset: processor.composition)
-            self.playerView.player = AVPlayer(playerItem: playerItem)
+            self.previewViewCtrl.loadAsset(processor.composition)
+            self.previewViewCtrl.videoProcessor = processor
         }
         processor.beginProcessing()
     }
     
     // Shows window with processor queue status
     @IBAction func showStatus(sender: AnyObject) {
-        statusViewCtrl.videoProcessor = self.activeProcessor
+//        statusViewCtrl.videoProcessor = self.activeProcessor
         statusWindowCtrl.showWindow(self)
     }
     
-    @IBAction func showInterestingFootage(sender: AnyObject) {
-//        detailWindowCtrl.showWindow(self)
-//        detailWindowCtrl.videoProcessor = self.activeProcessor
+    @IBAction func showPreview(sender: AnyObject) {
+        previewWindowCtrl.showWindow(self)
     }
+    
     
 //    @IBAction func previewImageFrame(sender: AnyObject) {
 //        if let processor = self.activeProcessor {

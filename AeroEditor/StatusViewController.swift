@@ -17,7 +17,7 @@ class StatusViewController: NSViewController, NSOutlineViewDataSource {
             self.updateProgress()
         }
     }
-    var updateProgressTimer: NSTimer?
+    lazy var updateProgressTimer: NSTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("updateProgress"), userInfo: nil, repeats: true)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class StatusViewController: NSViewController, NSOutlineViewDataSource {
         tableView.allowsColumnResizing = false
         tableView.allowsColumnSelection = false
         
-        self.updateProgressTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("updateProgress"), userInfo: nil, repeats: true)
+        self.updateProgressTimer.fire()
     }
     
     func updateProgress() {

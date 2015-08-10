@@ -2,6 +2,7 @@
 # platform :ios, '6.0'
 
 target 'AeroEditor' do
+    pod 'GPUImage'
 end
 
 target 'AeroEditorTests' do
