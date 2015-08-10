@@ -82,10 +82,10 @@ class PreviewViewController: NSViewController, CPTBarPlotDataSource, CPTBarPlotD
         
         let barLineStyle = CPTMutableLineStyle()
         barLineStyle.lineColor = CPTColor.lightGrayColor()
-        barLineStyle.lineWidth = 0.1
+        barLineStyle.lineWidth = 0
         
-        barPlot.barWidth = 0.3
-        barPlot.barOffset = 0.01
+        barPlot.barWidth = 1
+        barPlot.barOffset = 0
         barPlot.lineStyle = barLineStyle
         
         graph.addPlot(barPlot, toPlotSpace: graph.defaultPlotSpace)
@@ -121,6 +121,7 @@ class PreviewViewController: NSViewController, CPTBarPlotDataSource, CPTBarPlotD
         if let processor = videoProcessor {
             let start: CMTime = processor.interestingTimes[Int(idx)].timeRange.start
             playerView.player?.seekToTime(start)
+            playerView.player?.play()
         }
     }
     

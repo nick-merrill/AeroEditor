@@ -12,7 +12,7 @@ import QuartzCore
 import CoreImage
 
 let VIDEO_TIME_SCALE:Int32 = 20
-let COMPARE_DISTANCE: Int64 = 20
+let COMPARE_DISTANCE: Int64 = 10
 
 // Used to indicate time ranges of varying levels of interesting footage.
 class NMInterestingTimeRange: NSObject {
