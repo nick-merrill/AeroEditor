@@ -48,10 +48,6 @@ class PreviewViewController: NSViewController, CPTBarPlotDataSource, CPTBarPlotD
         graph.defaultPlotSpace?.scaleToFitPlots(graph.allPlots())
     }
     
-    @IBAction func displacePlot(sender: AnyObject) {
-        reloadGraph()
-    }
-    
     func configureGraph() -> CPTGraph {
         let graph = CPTXYGraph(frame: graphHostingView.bounds, xScaleType: CPTScaleType.DateTime, yScaleType: CPTScaleType.Linear)
         graph.plotAreaFrame?.masksToBorder = false
