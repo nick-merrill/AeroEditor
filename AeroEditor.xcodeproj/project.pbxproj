@@ -13,6 +13,8 @@
 		010C22B91B7519F400645D7D /* CorePlot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010C22AE1B7519E400645D7D /* CorePlot.framework */; };
 		010C22BB1B751A5900645D7D /* CorePlot.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 010C22AE1B7519E400645D7D /* CorePlot.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		010C22BD1B751A9A00645D7D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010C22BC1B751A9A00645D7D /* QuartzCore.framework */; };
+		011CAF061B80587000E23D6F /* NMFootageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011CAF051B80587000E23D6F /* NMFootageObject.swift */; };
+		011CAF081B8058A100E23D6F /* NMFootageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011CAF071B8058A100E23D6F /* NMFootageAsset.swift */; };
 		011D897C1B69EB7D003D605D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D897B1B69EB7D003D605D /* AppDelegate.swift */; };
 		011D897E1B69EB7D003D605D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D897D1B69EB7D003D605D /* ViewController.swift */; };
 		011D89801B69EB7D003D605D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 011D897F1B69EB7D003D605D /* Images.xcassets */; };
@@ -20,6 +22,13 @@
 		011D898F1B69EB7D003D605D /* AeroEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D898E1B69EB7D003D605D /* AeroEditorTests.swift */; };
 		011D89991B69F4E0003D605D /* NMVideoProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D89981B69F4E0003D605D /* NMVideoProcessor.swift */; };
 		011D899B1B69F6BE003D605D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011D899A1B69F6BE003D605D /* AVFoundation.framework */; };
+		01A2C3611B79460800C97408 /* ChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2C3601B79460800C97408 /* ChooseViewController.swift */; };
+		01A2C3631B79733900C97408 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2C3621B79733900C97408 /* MainViewController.swift */; };
+		01A2C3651B79753A00C97408 /* NMFootageAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2C3641B79753A00C97408 /* NMFootageAngle.swift */; };
+		01A2C3671B7A435700C97408 /* SubMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2C3661B7A435700C97408 /* SubMainViewController.swift */; };
+		01A2C3691B7A460100C97408 /* ChooseSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2C3681B7A460100C97408 /* ChooseSplitViewController.swift */; };
+		01A2C36C1B7A49CC00C97408 /* ChooseOutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2C36B1B7A49CC00C97408 /* ChooseOutlineViewController.swift */; };
+		01A2C36E1B7A4AC900C97408 /* ChooseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2C36D1B7A4AC900C97408 /* ChooseDetailViewController.swift */; };
 		8AB08E56503DF7F769835C37 /* libPods-AeroEditor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0627182E805C19FE8237E18F /* libPods-AeroEditor.a */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +104,8 @@
 		010C22A01B75177900645D7D /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		010C22A11B7519E300645D7D /* CorePlot.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CorePlot.xcodeproj; path = "../../tools/core-plot-release-2.0/framework/CorePlot.xcodeproj"; sourceTree = "<group>"; };
 		010C22BC1B751A9A00645D7D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		011CAF051B80587000E23D6F /* NMFootageObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NMFootageObject.swift; path = Footage/NMFootageObject.swift; sourceTree = "<group>"; };
+		011CAF071B8058A100E23D6F /* NMFootageAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NMFootageAsset.swift; path = Footage/NMFootageAsset.swift; sourceTree = "<group>"; };
 		011D89761B69EB7D003D605D /* AeroEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AeroEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		011D897A1B69EB7D003D605D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		011D897B1B69EB7D003D605D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +117,13 @@
 		011D898E1B69EB7D003D605D /* AeroEditorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeroEditorTests.swift; sourceTree = "<group>"; };
 		011D89981B69F4E0003D605D /* NMVideoProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NMVideoProcessor.swift; sourceTree = "<group>"; };
 		011D899A1B69F6BE003D605D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		01A2C3601B79460800C97408 /* ChooseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseViewController.swift; sourceTree = "<group>"; };
+		01A2C3621B79733900C97408 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		01A2C3641B79753A00C97408 /* NMFootageAngle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NMFootageAngle.swift; sourceTree = "<group>"; };
+		01A2C3661B7A435700C97408 /* SubMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubMainViewController.swift; sourceTree = "<group>"; };
+		01A2C3681B7A460100C97408 /* ChooseSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSplitViewController.swift; sourceTree = "<group>"; };
+		01A2C36B1B7A49CC00C97408 /* ChooseOutlineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseOutlineViewController.swift; path = Choose/ChooseOutlineViewController.swift; sourceTree = "<group>"; };
+		01A2C36D1B7A4AC900C97408 /* ChooseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseDetailViewController.swift; path = Choose/ChooseDetailViewController.swift; sourceTree = "<group>"; };
 		0627182E805C19FE8237E18F /* libPods-AeroEditor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AeroEditor.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7968F79CAB714195CA78B91D /* Pods-AeroEditor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AeroEditor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AeroEditor/Pods-AeroEditor.debug.xcconfig"; sourceTree = "<group>"; };
 		AA8F2295D1977F893658CEDE /* Pods-AeroEditor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AeroEditor.release.xcconfig"; path = "Pods/Target Support Files/Pods-AeroEditor/Pods-AeroEditor.release.xcconfig"; sourceTree = "<group>"; };
@@ -146,6 +164,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		011CAEFB1B80585800E23D6F /* Footage */ = {
+			isa = PBXGroup;
+			children = (
+				011CAF051B80587000E23D6F /* NMFootageObject.swift */,
+				01A2C3641B79753A00C97408 /* NMFootageAngle.swift */,
+				011CAF071B8058A100E23D6F /* NMFootageAsset.swift */,
+			);
+			name = Footage;
+			sourceTree = "<group>";
+		};
 		011D896D1B69EB7D003D605D = {
 			isa = PBXGroup;
 			children = (
@@ -171,11 +199,15 @@
 		011D89781B69EB7D003D605D /* AeroEditor */ = {
 			isa = PBXGroup;
 			children = (
+				011CAEFB1B80585800E23D6F /* Footage */,
+				01A2C36A1B7A499C00C97408 /* Choose */,
 				010C22891B718EF600645D7D /* StatusViewController.swift */,
 				011D897B1B69EB7D003D605D /* AppDelegate.swift */,
 				011D897D1B69EB7D003D605D /* ViewController.swift */,
 				011D897F1B69EB7D003D605D /* Images.xcassets */,
 				011D89811B69EB7D003D605D /* Main.storyboard */,
+				01A2C3621B79733900C97408 /* MainViewController.swift */,
+				01A2C3661B7A435700C97408 /* SubMainViewController.swift */,
 				010C229C1B74FE0000645D7D /* PreviewViewController.swift */,
 				011D89981B69F4E0003D605D /* NMVideoProcessor.swift */,
 				010C228D1B73283700645D7D /* NMOperations.swift */,
@@ -208,6 +240,17 @@
 				011D898D1B69EB7D003D605D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		01A2C36A1B7A499C00C97408 /* Choose */ = {
+			isa = PBXGroup;
+			children = (
+				01A2C3601B79460800C97408 /* ChooseViewController.swift */,
+				01A2C3681B7A460100C97408 /* ChooseSplitViewController.swift */,
+				01A2C36B1B7A49CC00C97408 /* ChooseOutlineViewController.swift */,
+				01A2C36D1B7A4AC900C97408 /* ChooseDetailViewController.swift */,
+			);
+			name = Choose;
 			sourceTree = "<group>";
 		};
 		2DB3C7DB5BE2D668000EE2E1 /* Frameworks */ = {
@@ -416,12 +459,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01A2C36E1B7A4AC900C97408 /* ChooseDetailViewController.swift in Sources */,
 				010C228A1B718EF600645D7D /* StatusViewController.swift in Sources */,
 				011D897E1B69EB7D003D605D /* ViewController.swift in Sources */,
 				011D89991B69F4E0003D605D /* NMVideoProcessor.swift in Sources */,
+				01A2C3691B7A460100C97408 /* ChooseSplitViewController.swift in Sources */,
+				011CAF081B8058A100E23D6F /* NMFootageAsset.swift in Sources */,
 				010C228E1B73283700645D7D /* NMOperations.swift in Sources */,
+				01A2C3671B7A435700C97408 /* SubMainViewController.swift in Sources */,
 				011D897C1B69EB7D003D605D /* AppDelegate.swift in Sources */,
+				01A2C3611B79460800C97408 /* ChooseViewController.swift in Sources */,
+				01A2C36C1B7A49CC00C97408 /* ChooseOutlineViewController.swift in Sources */,
 				010C229D1B74FE0000645D7D /* PreviewViewController.swift in Sources */,
+				011CAF061B80587000E23D6F /* NMFootageObject.swift in Sources */,
+				01A2C3631B79733900C97408 /* MainViewController.swift in Sources */,
+				01A2C3651B79753A00C97408 /* NMFootageAngle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

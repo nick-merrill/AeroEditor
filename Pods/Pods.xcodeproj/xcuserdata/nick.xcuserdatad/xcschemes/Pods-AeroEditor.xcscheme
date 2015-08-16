@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DE6490834C6AA06391B812B4"
+               BlueprintIdentifier = "4E89ABAA5111B256305C82E1"
                BuildableName = "libPods-AeroEditor.a"
                BlueprintName = "Pods-AeroEditor"
                ReferencedContainer = "container:Pods.xcodeproj">
