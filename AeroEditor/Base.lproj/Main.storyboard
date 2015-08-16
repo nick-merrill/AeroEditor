@@ -567,30 +567,7 @@
                     <view key="view" id="9Pr-9d-efO">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZU9-T0-5VQ">
-                                <rect key="frame" x="177" y="258" width="96" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="96" id="oFz-ZY-Fyf"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="x7Z-sr-O9z">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <outlet property="delegate" destination="Zca-fy-uBb" id="oT3-8b-hQX"/>
-                                </connections>
-                            </textField>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="ZU9-T0-5VQ" firstAttribute="centerX" secondItem="9Pr-9d-efO" secondAttribute="centerX" id="Ubp-Jg-FO6"/>
-                            <constraint firstItem="ZU9-T0-5VQ" firstAttribute="top" secondItem="9Pr-9d-efO" secondAttribute="top" constant="20" symbolic="YES" id="b7O-oW-XY2"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="angleNameTextField" destination="ZU9-T0-5VQ" id="PpK-Fj-tGZ"/>
-                    </connections>
                 </viewController>
                 <customObject id="094-2h-36l" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

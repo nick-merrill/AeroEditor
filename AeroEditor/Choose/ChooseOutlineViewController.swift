@@ -22,58 +22,33 @@ class ChooseOutlineViewController: SubMainViewController, NSOutlineViewDelegate 
     }
     
     @IBAction func addAngle(sender: AnyObject) {
-//        footageController.addObject(NMFootageAngle())
         footageController.add(self)
-        outlineView.reloadData()
     }
     
     @IBAction func addAsset(sender: AnyObject) {
         footageController.addChild(self)
-        outlineView.reloadData()
     }
     
     @IBAction func remove(sender: AnyObject) {
         footageController.remove(self)
-        outlineView.reloadData()
     }
     
     func outlineView(outlineView: NSOutlineView, isItemExpandable item: AnyObject) -> Bool {
         return true
     }
     
-//    func outlineView(outlineView: NSOutlineView, numberOfChildrenOfItem item: AnyObject?) -> Int {
-//        if item == nil {
-//            return footageAngles.count
-//        }
-//        return 2
-//    }
-//    
-//    func outlineView(outlineView: NSOutlineView, child index: Int, ofItem item: AnyObject?) -> AnyObject {
-//        if let angle = footageAngleAtIndex(index) {
-//            return angle.name
-//        }
-//        return "⚠ Not Found"
-//    }
-    
     func outlineView(outlineView: NSOutlineView, viewForTableColumn tableColumn: NSTableColumn?, item: AnyObject) -> NSView? {
         let view = outlineView.makeViewWithIdentifier("DataCell", owner: self) as! NSTableCellView
-        //if let textField = view.textField {
-        //    if let stringValue = item as? String {
-        //        textField.stringValue = stringValue
-        //    }
-        //}
         return view
     }
     
-//    func outlineViewSelectionDidChange(notification: NSNotification) {
-//        if outlineView.selectedRow == -1 {
-//            return
-//        }
-//        if let selectedAngle = outlineView. {
-//            NSNotificationCenter.defaultCenter().postNotificationName("ChooseOutlineViewSelectionChanged", object: self, userInfo: ["selectedAngle": selectedAngle])
-//        }
-//    }
+    func outlineViewSelectionDidChange(notification: NSNotification) {
+        if let selectedAngle = footageController.selectedObjects.first {
+            NSNotificationCenter.defaultCenter().postNotificationName("ChooseOutlineViewSelectionChanged", object: self, userInfo: ["selectedAngle": selectedAngle])
+        }
+    }
+    
     @IBAction func footageObjectEdited(sender: AnyObject) {
-        print(footageController.content)
+//        print(footageController.content)
     }
 }

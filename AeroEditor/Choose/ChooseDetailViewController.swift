@@ -8,16 +8,9 @@
 
 import Cocoa
 
-class ChooseDetailViewController: SubMainViewController, NSTextFieldDelegate {
+class ChooseDetailViewController: SubMainViewController {
 
-    @IBOutlet weak var angleNameTextField: NSTextField!
-    var angle: NMFootageAngle? {
-        didSet {
-            if let angle = angle {
-                angleNameTextField.stringValue = angle.title
-            }
-        }
-    }
+    var angle: NMFootageAngle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +19,5 @@ class ChooseDetailViewController: SubMainViewController, NSTextFieldDelegate {
     
     func updateSelection(notification: NSNotification) {
         angle = notification.userInfo?["selectedAngle"] as? NMFootageAngle
-    }
-    
-    override func controlTextDidChange(obj: NSNotification) {
-        if obj.userInfo?["NSFieldEditor"] as? NSTextField == angleNameTextField {
-            print("yes")
-        }
-        
-        super.controlTextDidChange(obj)
     }
 }
