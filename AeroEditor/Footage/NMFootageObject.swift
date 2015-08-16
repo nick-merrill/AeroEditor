@@ -12,6 +12,18 @@ class NMFootageObject: NSObject {
     var title: String = ""
     var children = [NMFootageObject]()
     
+    override var description: String {
+        var ret = "\(self.className): \(title)"
+        if children.count > 0 {
+            ret += " [children: "
+            for child in children {
+                ret += child.description
+            }
+            ret += "]"
+        }
+        return ret
+    }
+    
     func isLeaf() -> Bool {
         return true
     }

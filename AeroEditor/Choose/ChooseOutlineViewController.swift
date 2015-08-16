@@ -17,11 +17,18 @@ class ChooseOutlineViewController: SubMainViewController, NSOutlineViewDelegate 
         super.viewDidLoad()
         
         outlineView.bind("content", toObject: footageController, withKeyPath: "self.arrangedObjects", options: nil)
+        outlineView.bind("selectionIndexPaths", toObject: footageController, withKeyPath: "self.selectionIndexPaths", options: nil)
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("[view(==200)]", options: [], metrics: nil, views: ["view": self.view]))
     }
     
-    @IBAction func add(sender: AnyObject) {
-        footageController.addObject(NMFootageAngle())
+    @IBAction func addAngle(sender: AnyObject) {
+//        footageController.addObject(NMFootageAngle())
+        footageController.add(self)
+        outlineView.reloadData()
+    }
+    
+    @IBAction func addAsset(sender: AnyObject) {
+        footageController.addChild(self)
         outlineView.reloadData()
     }
     
@@ -29,13 +36,6 @@ class ChooseOutlineViewController: SubMainViewController, NSOutlineViewDelegate 
         footageController.remove(self)
         outlineView.reloadData()
     }
-    
-//    func footageAngleAtIndex(index: Int) -> NMFootageAngle? {
-//        if index < footageController {
-//            return footageController.content
-//        }
-//        return nil
-//    }
     
     func outlineView(outlineView: NSOutlineView, isItemExpandable item: AnyObject) -> Bool {
         return true
@@ -56,7 +56,6 @@ class ChooseOutlineViewController: SubMainViewController, NSOutlineViewDelegate 
 //    }
     
     func outlineView(outlineView: NSOutlineView, viewForTableColumn tableColumn: NSTableColumn?, item: AnyObject) -> NSView? {
-        print("\(item)")
         let view = outlineView.makeViewWithIdentifier("DataCell", owner: self) as! NSTableCellView
         //if let textField = view.textField {
         //    if let stringValue = item as? String {
@@ -70,8 +69,11 @@ class ChooseOutlineViewController: SubMainViewController, NSOutlineViewDelegate 
 //        if outlineView.selectedRow == -1 {
 //            return
 //        }
-//        if let selectedAngle = footageAngleAtIndex(outlineView.selectedRow) {
+//        if let selectedAngle = outlineView. {
 //            NSNotificationCenter.defaultCenter().postNotificationName("ChooseOutlineViewSelectionChanged", object: self, userInfo: ["selectedAngle": selectedAngle])
 //        }
 //    }
+    @IBAction func footageObjectEdited(sender: AnyObject) {
+        print(footageController.content)
+    }
 }

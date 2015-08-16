@@ -15,6 +15,7 @@
 		010C22BD1B751A9A00645D7D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010C22BC1B751A9A00645D7D /* QuartzCore.framework */; };
 		011CAF061B80587000E23D6F /* NMFootageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011CAF051B80587000E23D6F /* NMFootageObject.swift */; };
 		011CAF081B8058A100E23D6F /* NMFootageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011CAF071B8058A100E23D6F /* NMFootageAsset.swift */; };
+		011CAF0A1B80671F00E23D6F /* NMFootageTreeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011CAF091B80671F00E23D6F /* NMFootageTreeController.swift */; };
 		011D897C1B69EB7D003D605D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D897B1B69EB7D003D605D /* AppDelegate.swift */; };
 		011D897E1B69EB7D003D605D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D897D1B69EB7D003D605D /* ViewController.swift */; };
 		011D89801B69EB7D003D605D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 011D897F1B69EB7D003D605D /* Images.xcassets */; };
@@ -106,6 +107,7 @@
 		010C22BC1B751A9A00645D7D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		011CAF051B80587000E23D6F /* NMFootageObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NMFootageObject.swift; path = Footage/NMFootageObject.swift; sourceTree = "<group>"; };
 		011CAF071B8058A100E23D6F /* NMFootageAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NMFootageAsset.swift; path = Footage/NMFootageAsset.swift; sourceTree = "<group>"; };
+		011CAF091B80671F00E23D6F /* NMFootageTreeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NMFootageTreeController.swift; path = Footage/NMFootageTreeController.swift; sourceTree = "<group>"; };
 		011D89761B69EB7D003D605D /* AeroEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AeroEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		011D897A1B69EB7D003D605D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		011D897B1B69EB7D003D605D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 		011CAEFB1B80585800E23D6F /* Footage */ = {
 			isa = PBXGroup;
 			children = (
+				011CAF091B80671F00E23D6F /* NMFootageTreeController.swift */,
 				011CAF051B80587000E23D6F /* NMFootageObject.swift */,
 				01A2C3641B79753A00C97408 /* NMFootageAngle.swift */,
 				011CAF071B8058A100E23D6F /* NMFootageAsset.swift */,
@@ -471,6 +474,7 @@
 				01A2C3611B79460800C97408 /* ChooseViewController.swift in Sources */,
 				01A2C36C1B7A49CC00C97408 /* ChooseOutlineViewController.swift in Sources */,
 				010C229D1B74FE0000645D7D /* PreviewViewController.swift in Sources */,
+				011CAF0A1B80671F00E23D6F /* NMFootageTreeController.swift in Sources */,
 				011CAF061B80587000E23D6F /* NMFootageObject.swift in Sources */,
 				01A2C3631B79733900C97408 /* MainViewController.swift in Sources */,
 				01A2C3651B79753A00C97408 /* NMFootageAngle.swift in Sources */,

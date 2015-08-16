@@ -431,12 +431,13 @@
                                                                 </imageView>
                                                                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zSf-3G-z19">
                                                                     <rect key="frame" x="25" y="0.0" width="172" height="17"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="cEu-M4-RSP">
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="cEu-M4-RSP">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
+                                                                        <action selector="footageObjectEdited:" target="QnW-J4-x3a" id="Aws-fA-XSf"/>
                                                                         <binding destination="bed-ze-Kv8" name="value" keyPath="objectValue.title" id="1qJ-FK-YtR"/>
                                                                     </connections>
                                                                 </textField>
@@ -486,7 +487,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="add:" target="QnW-J4-x3a" id="KkW-cR-aA8"/>
+                                            <action selector="addAngle:" target="QnW-J4-x3a" id="RiU-jA-T7f"/>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zay-uv-rIw">
@@ -509,16 +510,32 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                     </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DkU-Zr-ANk">
+                                        <rect key="frame" x="68" y="-1" width="30" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="SUg-JK-4Vc"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSStatusUnavailable" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pmW-RI-NRn">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="addAsset:" target="QnW-J4-x3a" id="QzS-p0-m8F"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="jCb-J2-i0f" firstAttribute="leading" secondItem="OxO-0c-okS" secondAttribute="leading" id="5a6-NE-Vzu"/>
                                     <constraint firstItem="Zay-uv-rIw" firstAttribute="leading" secondItem="jCb-J2-i0f" secondAttribute="trailing" id="7AQ-c5-9Id"/>
                                     <constraint firstItem="jCb-J2-i0f" firstAttribute="top" secondItem="OxO-0c-okS" secondAttribute="top" id="AQo-kO-8ap"/>
                                     <constraint firstItem="Zay-uv-rIw" firstAttribute="top" secondItem="OxO-0c-okS" secondAttribute="top" id="FFk-Lt-fUy"/>
+                                    <constraint firstItem="DkU-Zr-ANk" firstAttribute="bottom" secondItem="Lfr-Sv-YvS" secondAttribute="bottom" id="KFK-Km-rUt"/>
+                                    <constraint firstItem="DkU-Zr-ANk" firstAttribute="top" secondItem="Lfr-Sv-YvS" secondAttribute="top" id="N4W-F7-QXd"/>
                                     <constraint firstAttribute="trailing" secondItem="Lfr-Sv-YvS" secondAttribute="trailing" id="NYr-WZ-CXb"/>
                                     <constraint firstItem="Lfr-Sv-YvS" firstAttribute="top" secondItem="OxO-0c-okS" secondAttribute="top" id="Qix-em-Rhd"/>
                                     <constraint firstAttribute="height" constant="30" id="hJV-Ef-m9M"/>
                                     <constraint firstAttribute="bottom" secondItem="Zay-uv-rIw" secondAttribute="bottom" id="pGi-ot-jH4"/>
+                                    <constraint firstItem="Lfr-Sv-YvS" firstAttribute="leading" secondItem="DkU-Zr-ANk" secondAttribute="trailing" constant="-38" id="svE-83-fU0"/>
                                     <constraint firstItem="Lfr-Sv-YvS" firstAttribute="leading" secondItem="Zay-uv-rIw" secondAttribute="trailing" id="tEJ-4C-cVl"/>
                                     <constraint firstAttribute="bottom" secondItem="Lfr-Sv-YvS" secondAttribute="bottom" id="uL0-bF-GDY"/>
                                     <constraint firstAttribute="bottom" secondItem="jCb-J2-i0f" secondAttribute="bottom" id="y0X-0r-8xO"/>
@@ -699,7 +716,7 @@
                     </connections>
                 </tabViewController>
                 <customObject id="p7V-qU-lc0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <treeController childrenKeyPath="children" leafKeyPath="isLeaf" id="RdE-hc-DmR">
+                <treeController childrenKeyPath="children" leafKeyPath="isLeaf" id="RdE-hc-DmR" customClass="NMFootageTreeController" customModule="AeroEditor" customModuleProvider="target">
                     <connections>
                         <binding destination="R9F-ve-KEb" name="contentArray" keyPath="self.footage" id="mA2-DX-YNi"/>
                     </connections>
@@ -765,5 +782,6 @@
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
+        <image name="NSStatusUnavailable" width="16" height="16"/>
     </resources>
 </document>
