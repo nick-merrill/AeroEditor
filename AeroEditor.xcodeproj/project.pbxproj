@@ -21,6 +21,7 @@
 		011D898F1B69EB7D003D605D /* AeroEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D898E1B69EB7D003D605D /* AeroEditorTests.swift */; };
 		011D89991B69F4E0003D605D /* NMVideoProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D89981B69F4E0003D605D /* NMVideoProcessor.swift */; };
 		011D899B1B69F6BE003D605D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011D899A1B69F6BE003D605D /* AVFoundation.framework */; };
+		015D78F61FB0F14A00931405 /* CorePlot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 015D78E71FB0F13E00931405 /* CorePlot.framework */; };
 		01A2C3611B79460800C97408 /* ChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2C3601B79460800C97408 /* ChooseViewController.swift */; };
 		01A2C3631B79733900C97408 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2C3621B79733900C97408 /* MainViewController.swift */; };
 		01A2C3651B79753A00C97408 /* NMFootageAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2C3641B79753A00C97408 /* NMFootageAngle.swift */; };
@@ -28,8 +29,8 @@
 		01A2C3691B7A460100C97408 /* ChooseSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2C3681B7A460100C97408 /* ChooseSplitViewController.swift */; };
 		01A2C36C1B7A49CC00C97408 /* ChooseOutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2C36B1B7A49CC00C97408 /* ChooseOutlineViewController.swift */; };
 		01A2C36E1B7A4AC900C97408 /* ChooseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2C36D1B7A4AC900C97408 /* ChooseDetailViewController.swift */; };
-		01B624F01BB9F01D0073C41A /* CorePlot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01B624E51BB9EFCF0073C41A /* CorePlot.framework */; };
-		8AB08E56503DF7F769835C37 /* libPods-AeroEditor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0627182E805C19FE8237E18F /* libPods-AeroEditor.a */; };
+		1D81187F2F99DE902126A48C /* libPods-AeroEditor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7F275AF9388A7B7C1C9376 /* libPods-AeroEditor.a */; };
+		714C9C547AC87A1FEDEDE95B /* libPods-AeroEditorTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B567B907BE9F0A023B52114B /* libPods-AeroEditorTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,47 +41,61 @@
 			remoteGlobalIDString = 011D89751B69EB7D003D605D;
 			remoteInfo = AeroEditor;
 		};
-		01B624E41BB9EFCF0073C41A /* PBXContainerItemProxy */ = {
+		015D78E61FB0F13E00931405 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 01B624CF1BB9EFCF0073C41A /* CorePlot.xcodeproj */;
+			containerPortal = 015D78D61FB0F13E00931405 /* CorePlot.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
 			remoteInfo = "CorePlot Mac";
 		};
-		01B624E61BB9EFCF0073C41A /* PBXContainerItemProxy */ = {
+		015D78E81FB0F13E00931405 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 01B624CF1BB9EFCF0073C41A /* CorePlot.xcodeproj */;
+			containerPortal = 015D78D61FB0F13E00931405 /* CorePlot.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 0730F600109492D800E95162;
 			remoteInfo = "UnitTests Mac";
 		};
-		01B624E81BB9EFCF0073C41A /* PBXContainerItemProxy */ = {
+		015D78EA1FB0F13E00931405 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 01B624CF1BB9EFCF0073C41A /* CorePlot.xcodeproj */;
+			containerPortal = 015D78D61FB0F13E00931405 /* CorePlot.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = C38A09781A46185200D45436;
 			remoteInfo = "CorePlot iOS";
 		};
-		01B624EA1BB9EFCF0073C41A /* PBXContainerItemProxy */ = {
+		015D78EC1FB0F13E00931405 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 01B624CF1BB9EFCF0073C41A /* CorePlot.xcodeproj */;
+			containerPortal = 015D78D61FB0F13E00931405 /* CorePlot.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = C38A09821A46185300D45436;
 			remoteInfo = "UnitTests iOS";
 		};
-		01B624EC1BB9EFCF0073C41A /* PBXContainerItemProxy */ = {
+		015D78EE1FB0F13E00931405 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 01B624CF1BB9EFCF0073C41A /* CorePlot.xcodeproj */;
+			containerPortal = 015D78D61FB0F13E00931405 /* CorePlot.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = C38A09BA1A4619A900D45436;
 			remoteInfo = "CorePlot-CocoaTouch";
 		};
-		01B624EE1BB9EFCF0073C41A /* PBXContainerItemProxy */ = {
+		015D78F01FB0F13E00931405 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 01B624CF1BB9EFCF0073C41A /* CorePlot.xcodeproj */;
+			containerPortal = 015D78D61FB0F13E00931405 /* CorePlot.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = C38A09C41A4619A900D45436;
 			remoteInfo = "CorePlot-CocoaTouchTests";
+		};
+		015D78F21FB0F13E00931405 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 015D78D61FB0F13E00931405 /* CorePlot.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C37EA6921BC83F2A0091C8F7;
+			remoteInfo = "CorePlot tvOS";
+		};
+		015D78F41FB0F13E00931405 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 015D78D61FB0F13E00931405 /* CorePlot.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C37EA6B71BC83F2D0091C8F7;
+			remoteInfo = "UnitTests tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -116,6 +131,7 @@
 		011D898E1B69EB7D003D605D /* AeroEditorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeroEditorTests.swift; sourceTree = "<group>"; };
 		011D89981B69F4E0003D605D /* NMVideoProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NMVideoProcessor.swift; sourceTree = "<group>"; };
 		011D899A1B69F6BE003D605D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		015D78D61FB0F13E00931405 /* CorePlot.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CorePlot.xcodeproj; path = "../../tools/core-plot-release_2.2/framework/CorePlot.xcodeproj"; sourceTree = "<group>"; };
 		01A2C3601B79460800C97408 /* ChooseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseViewController.swift; sourceTree = "<group>"; };
 		01A2C3621B79733900C97408 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		01A2C3641B79753A00C97408 /* NMFootageAngle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NMFootageAngle.swift; sourceTree = "<group>"; };
@@ -123,10 +139,12 @@
 		01A2C3681B7A460100C97408 /* ChooseSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSplitViewController.swift; sourceTree = "<group>"; };
 		01A2C36B1B7A49CC00C97408 /* ChooseOutlineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseOutlineViewController.swift; path = Choose/ChooseOutlineViewController.swift; sourceTree = "<group>"; };
 		01A2C36D1B7A4AC900C97408 /* ChooseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseDetailViewController.swift; path = Choose/ChooseDetailViewController.swift; sourceTree = "<group>"; };
-		01B624CF1BB9EFCF0073C41A /* CorePlot.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CorePlot.xcodeproj; path = "../../tools/core-plot-release-2.0/framework/CorePlot.xcodeproj"; sourceTree = "<group>"; };
-		0627182E805C19FE8237E18F /* libPods-AeroEditor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AeroEditor.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7968F79CAB714195CA78B91D /* Pods-AeroEditor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AeroEditor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AeroEditor/Pods-AeroEditor.debug.xcconfig"; sourceTree = "<group>"; };
-		AA8F2295D1977F893658CEDE /* Pods-AeroEditor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AeroEditor.release.xcconfig"; path = "Pods/Target Support Files/Pods-AeroEditor/Pods-AeroEditor.release.xcconfig"; sourceTree = "<group>"; };
+		25202EBF1F1A046B50B632D5 /* Pods-AeroEditor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AeroEditor.release.xcconfig"; path = "Pods/Target Support Files/Pods-AeroEditor/Pods-AeroEditor.release.xcconfig"; sourceTree = "<group>"; };
+		6A5DDDD7E9E42DB7B1059710 /* Pods-AeroEditor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AeroEditor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AeroEditor/Pods-AeroEditor.debug.xcconfig"; sourceTree = "<group>"; };
+		9ADCCB9D6EC786B11020B955 /* Pods-AeroEditorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AeroEditorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AeroEditorTests/Pods-AeroEditorTests.release.xcconfig"; sourceTree = "<group>"; };
+		B567B907BE9F0A023B52114B /* libPods-AeroEditorTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AeroEditorTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E54EA185D240FEAAFC916994 /* Pods-AeroEditorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AeroEditorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AeroEditorTests/Pods-AeroEditorTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FE7F275AF9388A7B7C1C9376 /* libPods-AeroEditor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AeroEditor.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,10 +152,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01B624F01BB9F01D0073C41A /* CorePlot.framework in Frameworks */,
+				015D78F61FB0F14A00931405 /* CorePlot.framework in Frameworks */,
 				010C22BD1B751A9A00645D7D /* QuartzCore.framework in Frameworks */,
 				011D899B1B69F6BE003D605D /* AVFoundation.framework in Frameworks */,
-				8AB08E56503DF7F769835C37 /* libPods-AeroEditor.a in Frameworks */,
+				1D81187F2F99DE902126A48C /* libPods-AeroEditor.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				714C9C547AC87A1FEDEDE95B /* libPods-AeroEditorTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,13 +184,13 @@
 		011D896D1B69EB7D003D605D = {
 			isa = PBXGroup;
 			children = (
-				01B624CF1BB9EFCF0073C41A /* CorePlot.xcodeproj */,
+				015D78D61FB0F13E00931405 /* CorePlot.xcodeproj */,
 				011D899A1B69F6BE003D605D /* AVFoundation.framework */,
 				011D89781B69EB7D003D605D /* AeroEditor */,
 				011D898B1B69EB7D003D605D /* AeroEditorTests */,
 				011D89771B69EB7D003D605D /* Products */,
-				B1AFA91591D79198D5DBB629 /* Pods */,
 				2DB3C7DB5BE2D668000EE2E1 /* Frameworks */,
+				0F15ED287C902D4267EED414 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -230,6 +249,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		015D78D71FB0F13E00931405 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				015D78E71FB0F13E00931405 /* CorePlot.framework */,
+				015D78E91FB0F13E00931405 /* UnitTests.xctest */,
+				015D78EB1FB0F13E00931405 /* CorePlot.framework */,
+				015D78ED1FB0F13E00931405 /* UnitTests iOS.xctest */,
+				015D78EF1FB0F13E00931405 /* libCorePlot-CocoaTouch.a */,
+				015D78F11FB0F13E00931405 /* CorePlot-CocoaTouchTests.xctest */,
+				015D78F31FB0F13E00931405 /* CorePlot.framework */,
+				015D78F51FB0F13E00931405 /* UnitTests tvOS.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		01A2C36A1B7A499C00C97408 /* Choose */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,35 +275,25 @@
 			name = Choose;
 			sourceTree = "<group>";
 		};
-		01B624D01BB9EFCF0073C41A /* Products */ = {
+		0F15ED287C902D4267EED414 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				01B624E51BB9EFCF0073C41A /* CorePlot.framework */,
-				01B624E71BB9EFCF0073C41A /* UnitTests.xctest */,
-				01B624E91BB9EFCF0073C41A /* CorePlot.framework */,
-				01B624EB1BB9EFCF0073C41A /* UnitTests iOS.xctest */,
-				01B624ED1BB9EFCF0073C41A /* libCorePlot-CocoaTouch.a */,
-				01B624EF1BB9EFCF0073C41A /* CorePlot-CocoaTouchTests.xctest */,
+				6A5DDDD7E9E42DB7B1059710 /* Pods-AeroEditor.debug.xcconfig */,
+				25202EBF1F1A046B50B632D5 /* Pods-AeroEditor.release.xcconfig */,
+				E54EA185D240FEAAFC916994 /* Pods-AeroEditorTests.debug.xcconfig */,
+				9ADCCB9D6EC786B11020B955 /* Pods-AeroEditorTests.release.xcconfig */,
 			);
-			name = Products;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		2DB3C7DB5BE2D668000EE2E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				010C22BC1B751A9A00645D7D /* QuartzCore.framework */,
-				0627182E805C19FE8237E18F /* libPods-AeroEditor.a */,
+				FE7F275AF9388A7B7C1C9376 /* libPods-AeroEditor.a */,
+				B567B907BE9F0A023B52114B /* libPods-AeroEditorTests.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B1AFA91591D79198D5DBB629 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7968F79CAB714195CA78B91D /* Pods-AeroEditor.debug.xcconfig */,
-				AA8F2295D1977F893658CEDE /* Pods-AeroEditor.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,12 +303,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 011D89921B69EB7D003D605D /* Build configuration list for PBXNativeTarget "AeroEditor" */;
 			buildPhases = (
-				843803AF7067FCCDFC740A89 /* Check Pods Manifest.lock */,
+				0C25243913AAD7C6BB28859B /* [CP] Check Pods Manifest.lock */,
 				011D89721B69EB7D003D605D /* Sources */,
 				010C22BA1B751A3B00645D7D /* CopyFiles */,
 				011D89731B69EB7D003D605D /* Frameworks */,
 				011D89741B69EB7D003D605D /* Resources */,
-				427C9D0B5DF5CAC83739491A /* Copy Pods Resources */,
+				E7B26A4F7FFADE2786759ABC /* [CP] Embed Pods Frameworks */,
+				DDA23E49E4A2843607B0A7C7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -299,9 +324,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 011D89951B69EB7D003D605D /* Build configuration list for PBXNativeTarget "AeroEditorTests" */;
 			buildPhases = (
+				3471E35A8142F3F4A358A8D6 /* [CP] Check Pods Manifest.lock */,
 				011D89841B69EB7D003D605D /* Sources */,
 				011D89851B69EB7D003D605D /* Frameworks */,
 				011D89861B69EB7D003D605D /* Resources */,
+				FC472B23E5ED1AB0F4E35D8A /* [CP] Embed Pods Frameworks */,
+				06620D4363B567706A35C6E1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -320,7 +348,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "Nick Merrill";
 				TargetAttributes = {
 					011D89751B69EB7D003D605D = {
@@ -348,8 +376,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 01B624D01BB9EFCF0073C41A /* Products */;
-					ProjectRef = 01B624CF1BB9EFCF0073C41A /* CorePlot.xcodeproj */;
+					ProductGroup = 015D78D71FB0F13E00931405 /* Products */;
+					ProjectRef = 015D78D61FB0F13E00931405 /* CorePlot.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -361,46 +389,60 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		01B624E51BB9EFCF0073C41A /* CorePlot.framework */ = {
+		015D78E71FB0F13E00931405 /* CorePlot.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = CorePlot.framework;
-			remoteRef = 01B624E41BB9EFCF0073C41A /* PBXContainerItemProxy */;
+			remoteRef = 015D78E61FB0F13E00931405 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		01B624E71BB9EFCF0073C41A /* UnitTests.xctest */ = {
+		015D78E91FB0F13E00931405 /* UnitTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = UnitTests.xctest;
-			remoteRef = 01B624E61BB9EFCF0073C41A /* PBXContainerItemProxy */;
+			remoteRef = 015D78E81FB0F13E00931405 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		01B624E91BB9EFCF0073C41A /* CorePlot.framework */ = {
+		015D78EB1FB0F13E00931405 /* CorePlot.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = CorePlot.framework;
-			remoteRef = 01B624E81BB9EFCF0073C41A /* PBXContainerItemProxy */;
+			remoteRef = 015D78EA1FB0F13E00931405 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		01B624EB1BB9EFCF0073C41A /* UnitTests iOS.xctest */ = {
+		015D78ED1FB0F13E00931405 /* UnitTests iOS.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = "UnitTests iOS.xctest";
-			remoteRef = 01B624EA1BB9EFCF0073C41A /* PBXContainerItemProxy */;
+			remoteRef = 015D78EC1FB0F13E00931405 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		01B624ED1BB9EFCF0073C41A /* libCorePlot-CocoaTouch.a */ = {
+		015D78EF1FB0F13E00931405 /* libCorePlot-CocoaTouch.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = "libCorePlot-CocoaTouch.a";
-			remoteRef = 01B624EC1BB9EFCF0073C41A /* PBXContainerItemProxy */;
+			remoteRef = 015D78EE1FB0F13E00931405 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		01B624EF1BB9EFCF0073C41A /* CorePlot-CocoaTouchTests.xctest */ = {
+		015D78F11FB0F13E00931405 /* CorePlot-CocoaTouchTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = "CorePlot-CocoaTouchTests.xctest";
-			remoteRef = 01B624EE1BB9EFCF0073C41A /* PBXContainerItemProxy */;
+			remoteRef = 015D78F01FB0F13E00931405 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		015D78F31FB0F13E00931405 /* CorePlot.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CorePlot.framework;
+			remoteRef = 015D78F21FB0F13E00931405 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		015D78F51FB0F13E00931405 /* UnitTests tvOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "UnitTests tvOS.xctest";
+			remoteRef = 015D78F41FB0F13E00931405 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -425,34 +467,107 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		427C9D0B5DF5CAC83739491A /* Copy Pods Resources */ = {
+		06620D4363B567706A35C6E1 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AeroEditorTests/Pods-AeroEditorTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0C25243913AAD7C6BB28859B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AeroEditor-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3471E35A8142F3F4A358A8D6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AeroEditorTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DDA23E49E4A2843607B0A7C7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AeroEditor/Pods-AeroEditor-resources.sh",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_amatorka.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_miss_etikate.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_1.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_2.png",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AeroEditor/Pods-AeroEditor-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		843803AF7067FCCDFC740A89 /* Check Pods Manifest.lock */ = {
+		E7B26A4F7FFADE2786759ABC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AeroEditor/Pods-AeroEditor-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC472B23E5ED1AB0F4E35D8A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AeroEditorTests/Pods-AeroEditorTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -519,13 +634,21 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -564,13 +687,21 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -589,17 +720,19 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
 		011D89931B69EB7D003D605D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7968F79CAB714195CA78B91D /* Pods-AeroEditor.debug.xcconfig */;
+			baseConfigurationReference = 6A5DDDD7E9E42DB7B1059710 /* Pods-AeroEditor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AeroEditor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "co.nickmerrill.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = AeroEditor/BridgingHeader.h;
@@ -609,12 +742,13 @@
 		};
 		011D89941B69EB7D003D605D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AA8F2295D1977F893658CEDE /* Pods-AeroEditor.release.xcconfig */;
+			baseConfigurationReference = 25202EBF1F1A046B50B632D5 /* Pods-AeroEditor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AeroEditor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "co.nickmerrill.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = AeroEditor/BridgingHeader.h;
@@ -624,6 +758,7 @@
 		};
 		011D89961B69EB7D003D605D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E54EA185D240FEAAFC916994 /* Pods-AeroEditorTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -646,6 +781,7 @@
 		};
 		011D89971B69EB7D003D605D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9ADCCB9D6EC786B11020B955 /* Pods-AeroEditorTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;

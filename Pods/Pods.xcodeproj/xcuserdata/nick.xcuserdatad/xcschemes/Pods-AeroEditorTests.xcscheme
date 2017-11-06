@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BF24A42FFFBDD6CD2682FBBA146CF7E9"
-               BuildableName = "libPods-AeroEditor.a"
-               BlueprintName = "Pods-AeroEditor"
+               BlueprintIdentifier = "77B91A3053A045CF72A53D9F71E4DBB9"
+               BuildableName = "libPods-AeroEditorTests.a"
+               BlueprintName = "Pods-AeroEditorTests"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,9 +47,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BF24A42FFFBDD6CD2682FBBA146CF7E9"
-            BuildableName = "libPods-AeroEditor.a"
-            BlueprintName = "Pods-AeroEditor"
+            BlueprintIdentifier = "77B91A3053A045CF72A53D9F71E4DBB9"
+            BuildableName = "libPods-AeroEditorTests.a"
+            BlueprintName = "Pods-AeroEditorTests"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
