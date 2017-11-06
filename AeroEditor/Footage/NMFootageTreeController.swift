@@ -7,32 +7,56 @@
 //
 
 import Cocoa
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class NMFootageTreeController: NSTreeController {
-    override func add(sender: AnyObject?) {
+    override func add(_ sender: Any?) {
         if !canAdd {
             return
         }
-        if self.selectionIndexPath?.length > 1 {
+        if self.selectionIndexPath?.count > 1 {
             self.addObject(NMFootageAsset())
         } else {
             self.addObject(NMFootageAngle())
         }
     }
     
-    override func addChild(sender: AnyObject?) {
+    override func addChild(_ sender: Any?) {
         if !canAddChild {
             return
         }
-        let length = selectionIndexPath!.length
-        var indexes = [Int](count: length + 1, repeatedValue: 0)
-        selectionIndexPath!.getIndexes(&indexes)
+        let length = selectionIndexPath!.count
+        var indexes = [Int](repeating: 0, count: length + 1)
+        (selectionIndexPath! as NSIndexPath).getIndexes(&indexes)
         indexes[length] = 0
-        let newIndexPath = NSIndexPath(indexes: indexes, length: indexes.count)
-        self.insertObject(NMFootageAsset(), atArrangedObjectIndexPath: newIndexPath)
+        let newIndexPath = NSIndexPath(indexes: indexes, length: indexes.count) as IndexPath
+        self.insert(NMFootageAsset(), atArrangedObjectIndexPath: newIndexPath)
     }
     
     override var canAddChild: Bool {
-        return selectionIndexPath == nil || selectionIndexPath!.length <= 1
+        return selectionIndexPath == nil || selectionIndexPath!.count <= 1
     }
 }

@@ -10,14 +10,14 @@ import Cocoa
 
 // Helps automatically define the MainViewController
 // Used for other subclasses of NSViewController
-func getMainViewController(myViewController: NSViewController) -> MainViewController {
+func getMainViewController(_ myViewController: NSViewController) -> MainViewController {
     if let mainVC = getMainViewControllerFromParentViewController(myViewController) {
         return mainVC
     }
     assert(false)
 }
 
-func getMainViewControllerFromParentViewController(viewController: NSViewController?) -> MainViewController? {
+func getMainViewControllerFromParentViewController(_ viewController: NSViewController?) -> MainViewController? {
     if viewController == nil {
         return nil
     }
@@ -37,7 +37,7 @@ func getMainViewControllerFromParentViewController(viewController: NSViewControl
     if mainVC != nil {
         return mainVC!
     }
-    return getMainViewControllerFromParentViewController(viewController?.parentViewController)
+    return getMainViewControllerFromParentViewController(viewController?.parent)
 }
 
 

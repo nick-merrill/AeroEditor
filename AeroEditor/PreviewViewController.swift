@@ -30,11 +30,11 @@ class PreviewViewController: NSViewController, CPTBarPlotDataSource, CPTBarPlotD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        graph.backgroundColor = CPTColor.blackColor().cgColor
-        barPlot.backgroundColor = CPTColor.greenColor().cgColor
+        graph.backgroundColor = CPTColor.black().cgColor
+        barPlot.backgroundColor = CPTColor.green().cgColor
     }
     
-    func loadAsset(asset: AVAsset) {
+    func loadAsset(_ asset: AVAsset) {
         let playerItem = AVPlayerItem(asset: asset)
         playerView.player = AVPlayer(playerItem: playerItem)
     }
@@ -45,11 +45,11 @@ class PreviewViewController: NSViewController, CPTBarPlotDataSource, CPTBarPlotD
     
     func reloadGraph() {
         graph.reloadData()
-        graph.defaultPlotSpace?.scaleToFitPlots(graph.allPlots())
+        graph.defaultPlotSpace?.scale(toFit: graph.allPlots())
     }
     
     func configureGraph() -> CPTGraph {
-        let graph = CPTXYGraph(frame: graphHostingView.bounds, xScaleType: CPTScaleType.DateTime, yScaleType: CPTScaleType.Linear)
+        let graph = CPTXYGraph(frame: graphHostingView.bounds, xScaleType: CPTScaleType.dateTime, yScaleType: CPTScaleType.linear)
         graph.plotAreaFrame?.masksToBorder = false
         graphHostingView.hostedGraph = graph
 //        graph.applyTheme(CPTTheme(named: kCPTPlainBlackTheme))
@@ -72,37 +72,37 @@ class PreviewViewController: NSViewController, CPTBarPlotDataSource, CPTBarPlotD
     func configurePlot() -> CPTBarPlot {
         let barPlot = CPTBarPlot(frame: self.graph.bounds)
         barPlot.dataSource = self
-        barPlot.delegate = self
+        barPlot.delegate = self as! CALayerDelegate
         barPlot.barsAreHorizontal = false
         
         let barLineStyle = CPTMutableLineStyle()
-        barLineStyle.lineColor = CPTColor.lightGrayColor()
+        barLineStyle.lineColor = CPTColor.lightGray()
         barLineStyle.lineWidth = 0
         
         barPlot.barWidth = 1
         barPlot.barOffset = 0
         barPlot.lineStyle = barLineStyle
         
-        graph.addPlot(barPlot, toPlotSpace: graph.defaultPlotSpace)
+        graph.add(barPlot, to: graph.defaultPlotSpace)
         return barPlot
     }
     
-    func numberOfRecordsForPlot(plot: CPTPlot) -> UInt {
+    func numberOfRecords(for plot: CPTPlot) -> UInt {
         if let processor = videoProcessor {
             return UInt(processor.interestingTimes.count)
         }
         return 0
     }
     
-    func numberForPlot(plot: CPTPlot, field fieldEnum: UInt, recordIndex idx: UInt) -> AnyObject? {
-        if Int(fieldEnum) == CPTBarPlotField.BarTip.rawValue {
-            return videoProcessor?.interestingTimes[Int(idx)].score
+    func number(for plot: CPTPlot, field fieldEnum: UInt, record idx: UInt) -> AnyObject? {
+        if Int(fieldEnum) == CPTBarPlotField.barTip.rawValue {
+            return videoProcessor?.interestingTimes[Int(idx)].score as AnyObject
         }
-        return NSDecimalNumber(unsignedLong: idx)
+        return NSDecimalNumber(value: idx as UInt)
     }
     
-    func barFillForBarPlot(barPlot: CPTBarPlot, recordIndex idx: UInt) -> CPTFill? {
-        return CPTFill(color: CPTColor.redColor())
+    func barFill(for barPlot: CPTBarPlot, record idx: UInt) -> CPTFill? {
+        return CPTFill(color: CPTColor.red())
     }
     
 //    func dataLabelForPlot(plot: CPTPlot, recordIndex idx: UInt) -> CPTLayer? {
@@ -111,17 +111,17 @@ class PreviewViewController: NSViewController, CPTBarPlotDataSource, CPTBarPlotD
 //        return CPTTextLayer(text: "\(t.timeRange.start.seconds)")
 //    }
     
-    func barPlot(plot: CPTBarPlot, barWasSelectedAtRecordIndex idx: UInt) {
+    func barPlot(_ plot: CPTBarPlot, barWasSelectedAtRecord idx: UInt) {
         print("Selected \(idx)")
         if let processor = videoProcessor {
             let start: CMTime = processor.interestingTimes[Int(idx)].timeRange.start
-            playerView.player?.seekToTime(start)
+            playerView.player?.seek(to: start)
             playerView.player?.play()
         }
     }
     
     // Don't allow vertical scrolling
-    func plotSpace(space: CPTPlotSpace, willDisplaceBy proposedDisplacementVector: CGPoint) -> CGPoint {
-        return CGPointMake(proposedDisplacementVector.x, 0)
+    func plotSpace(_ space: CPTPlotSpace, willDisplaceBy proposedDisplacementVector: CGPoint) -> CGPoint {
+        return CGPoint(x: proposedDisplacementVector.x, y: 0)
     }
 }

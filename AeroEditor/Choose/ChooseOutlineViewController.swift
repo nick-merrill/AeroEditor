@@ -16,39 +16,39 @@ class ChooseOutlineViewController: SubMainViewController, NSOutlineViewDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        outlineView.bind("content", toObject: footageController, withKeyPath: "self.arrangedObjects", options: nil)
-        outlineView.bind("selectionIndexPaths", toObject: footageController, withKeyPath: "self.selectionIndexPaths", options: nil)
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("[view(==200)]", options: [], metrics: nil, views: ["view": self.view]))
+        outlineView.bind("content", to: footageController, withKeyPath: "self.arrangedObjects", options: nil)
+        outlineView.bind("selectionIndexPaths", to: footageController, withKeyPath: "self.selectionIndexPaths", options: nil)
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "[view(==200)]", options: [], metrics: nil, views: ["view": self.view]))
     }
     
-    @IBAction func addAngle(sender: AnyObject) {
+    @IBAction func addAngle(_ sender: AnyObject) {
         footageController.add(self)
     }
     
-    @IBAction func addAsset(sender: AnyObject) {
+    @IBAction func addAsset(_ sender: AnyObject) {
         footageController.addChild(self)
     }
     
-    @IBAction func remove(sender: AnyObject) {
+    @IBAction func remove(_ sender: AnyObject) {
         footageController.remove(self)
     }
     
-    func outlineView(outlineView: NSOutlineView, isItemExpandable item: AnyObject) -> Bool {
+    func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: AnyObject) -> Bool {
         return true
     }
     
-    func outlineView(outlineView: NSOutlineView, viewForTableColumn tableColumn: NSTableColumn?, item: AnyObject) -> NSView? {
-        let view = outlineView.makeViewWithIdentifier("DataCell", owner: self) as! NSTableCellView
+    func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
+        let view = outlineView.make(withIdentifier: "DataCell", owner: self) as! NSTableCellView
         return view
     }
     
-    func outlineViewSelectionDidChange(notification: NSNotification) {
+    func outlineViewSelectionDidChange(_ notification: Notification) {
         if let selectedAngle = footageController.selectedObjects.first {
-            NSNotificationCenter.defaultCenter().postNotificationName("ChooseOutlineViewSelectionChanged", object: self, userInfo: ["selectedAngle": selectedAngle])
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "ChooseOutlineViewSelectionChanged"), object: self, userInfo: ["selectedAngle": selectedAngle])
         }
     }
     
-    @IBAction func footageObjectEdited(sender: AnyObject) {
+    @IBAction func footageObjectEdited(_ sender: AnyObject) {
 //        print(footageController.content)
     }
 }

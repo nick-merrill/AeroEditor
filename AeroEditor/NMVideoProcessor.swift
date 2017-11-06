@@ -10,6 +10,30 @@ import Cocoa
 import AVFoundation
 import QuartzCore
 import CoreImage
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 let VIDEO_TIME_SCALE:Int32 = 100
 let COMPARE_DISTANCE: Int64 = 25
@@ -53,7 +77,7 @@ class NMPixel: NSObject {
     }
 
     
-    func differenceScore(pixel2: NMPixel) -> Float {
+    func differenceScore(_ pixel2: NMPixel) -> Float {
         let alphaDiff = abs(self.alpha - pixel2.alpha)
         let redDiff = abs(self.red - pixel2.red)
         let greenDiff = abs(self.green - pixel2.green)
@@ -88,7 +112,7 @@ let GRID_HEIGHT = 10
 let GRID_SKIP_PIXELS = HISTOGRAM_SKIP_PIXELS
 
 class NMImageAnalyzer: NSObject {
-    var bitmapData: UnsafeMutablePointer<Void>
+    var bitmapData: UnsafeMutableRawPointer
     var imageData: UnsafePointer<UInt8>
     let pixelsWide: Int
     let pixelsHigh: Int
@@ -105,10 +129,10 @@ class NMImageAnalyzer: NSObject {
     init(image: CGImage) {
         let bitmapContext = NMImageAnalyzer.bitmapContext(image)
         self.bitmapData = bitmapContext.bitmapData
-        let uncastedData = CGBitmapContextGetData(bitmapContext.context)
+        let uncastedData = (bitmapContext.context).data
         self.imageData = UnsafePointer<UInt8>(uncastedData)
-        self.pixelsWide = CGImageGetWidth(image)
-        self.pixelsHigh = CGImageGetHeight(image)
+        self.pixelsWide = image.width
+        self.pixelsHigh = image.height
         super.init()
         
         // Create histogram
@@ -122,12 +146,12 @@ class NMImageAnalyzer: NSObject {
         free(self.bitmapData)
     }
     
-    private func generateHistogram() {
-        var intensityHistogramBuckets = [Float?](count: HISTOGRAM_NUM_BUCKETS, repeatedValue: nil)
-        for var i in 0..<HISTOGRAM_NUM_BUCKETS {
+    fileprivate func generateHistogram() {
+        var intensityHistogramBuckets = [Float?](repeating: nil, count: HISTOGRAM_NUM_BUCKETS)
+        for let i in 0..<HISTOGRAM_NUM_BUCKETS {
             intensityHistogramBuckets[i] = Float(i) / Float(HISTOGRAM_NUM_BUCKETS)
         }
-        self.intensityHistogram = [Int](count: HISTOGRAM_NUM_BUCKETS, repeatedValue: 0)
+        self.intensityHistogram = [Int](repeating: 0, count: HISTOGRAM_NUM_BUCKETS)
         for var y = 0; y < self.pixelsHigh; y += HISTOGRAM_SKIP_PIXELS {
             for var x = 0; x < self.pixelsWide; x += HISTOGRAM_SKIP_PIXELS {
                 let pixel = self.pixelAt(x: x, y: y)
@@ -137,21 +161,21 @@ class NMImageAnalyzer: NSObject {
                     if intensityHistogramBuckets[bucketIndex + 1] > intensity {
                         break
                     }
-                    bucketIndex++
+                    bucketIndex += 1
                 }
                 // Increment the appropriate bucket
-                self.intensityHistogram[bucketIndex]++
+                self.intensityHistogram[bucketIndex] += 1
             }
         }
     }
     
-    private func generateAverageGrid() {
+    fileprivate func generateAverageGrid() {
         let widthPerGridPanel = self.pixelsWide / GRID_WIDTH
         let heightPerGridPanel = self.pixelsHigh / GRID_HEIGHT
-        self.averageGrid = Array<[NMPixel?]>(count: GRID_HEIGHT, repeatedValue: [NMPixel?]())
-        for var n in 0..<GRID_HEIGHT {
-            self.averageGrid[n] = [NMPixel?](count: GRID_WIDTH, repeatedValue: nil)
-            for var m in 0..<GRID_WIDTH {
+        self.averageGrid = Array<[NMPixel?]>(repeating: [NMPixel?](), count: GRID_HEIGHT)
+        for let n in 0..<GRID_HEIGHT {
+            self.averageGrid[n] = [NMPixel?](repeating: nil, count: GRID_WIDTH)
+            for let m in 0..<GRID_WIDTH {
                 // Calculate average pixel color within grid panel (m, n)
                 let widthOffset = m * widthPerGridPanel
                 let heightOffset = n * heightPerGridPanel
@@ -169,7 +193,7 @@ class NMImageAnalyzer: NSObject {
                         greenSum += pixel.green
                         blueSum += pixel.blue
                         //                        intensitySum += pixel.intensity()
-                        count++
+                        count += 1
                     }
                 }
                 let countF = Float(count)
@@ -184,10 +208,10 @@ class NMImageAnalyzer: NSObject {
     }
     
     // From https://gist.github.com/jokester/948616a1b881451796d6
-    private class func bitmapContext(img: CGImage) -> (context: CGContextRef, bitmapData: UnsafeMutablePointer<Void>) {
+    fileprivate class func bitmapContext(_ img: CGImage) -> (context: CGContext, bitmapData: UnsafeMutableRawPointer) {
         // Get image width, height
-        let pixelsWide = CGImageGetWidth(img)
-        let pixelsHigh = CGImageGetHeight(img)
+        let pixelsWide = img.width
+        let pixelsHigh = img.height
         
         // Declare the number of bytes per row. Each pixel in the bitmap in this
         // example is represented by 4 bytes; 8 bits each of red, green, blue, and
@@ -201,22 +225,22 @@ class NMImageAnalyzer: NSObject {
         // Allocate memory for image data. This is the destination in memory
         // where any drawing to the bitmap context will be rendered.
         let bitmapData = malloc(bitmapByteCount)
-        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedFirst.rawValue)
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedFirst.rawValue)
         
         // Create the bitmap context. We want pre-multiplied ARGB, 8-bits
         // per component. Regardless of what the source image format is
         // (CMYK, Grayscale, and so on) it will be converted over to the format
         // specified here by CGBitmapContextCreate.
-        let context = CGBitmapContextCreate(bitmapData, pixelsWide, pixelsHigh, 8, bitmapBytesPerRow, colorSpace, bitmapInfo.rawValue)!
+        let context = CGContext(data: bitmapData, width: pixelsWide, height: pixelsHigh, bitsPerComponent: 8, bytesPerRow: bitmapBytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)!
                 
         // draw the image onto the context
         let rect = CGRect(x: 0, y: 0, width: pixelsWide, height: pixelsHigh)
-        CGContextDrawImage(context, rect, img)
+        context.draw(img, in: rect)
         
-        return (context, bitmapData)
+        return (context, bitmapData!)
     }
     
-    private func pixelAt(x x: Int, y: Int) -> NMPixel {
+    fileprivate func pixelAt(x: Int, y: Int) -> NMPixel {
         assert(0 <= x && x < self.pixelsWide)
         assert(0 <= y && y < self.pixelsHigh)
         let offset = 4 * (y * self.pixelsWide + x)
@@ -228,10 +252,10 @@ class NMImageAnalyzer: NSObject {
     }
     
     // Compares each color grid panel and returns average difference between all panels
-    func differenceScoreByColorGrid(analyzer2: NMImageAnalyzer) -> Float {
+    func differenceScoreByColorGrid(_ analyzer2: NMImageAnalyzer) -> Float {
         var differenceSum: Float = 0
-        for var n in 0..<GRID_HEIGHT {
-            for var m in 0..<GRID_WIDTH {
+        for let n in 0..<GRID_HEIGHT {
+            for let m in 0..<GRID_WIDTH {
                 let pixel1 = self.averageGrid[n][m]!
                 let pixel2 = analyzer2.averageGrid[n][m]!
                 let difference: Float = pixel1.differenceScore(pixel2)
@@ -243,8 +267,8 @@ class NMImageAnalyzer: NSObject {
 }
 
 
-enum NMVideoFrameError: ErrorType {
-    case InvalidFrame
+enum NMVideoFrameError: Error {
+    case invalidFrame
 }
 
 
@@ -260,15 +284,15 @@ class NMVideoFrame: NSObject {
         if let image = NMVideoFrame.getImageFromAsset(asset, time: time) {
             self.image = image
         } else {
-            throw NMVideoFrameError.InvalidFrame
+            throw NMVideoFrameError.invalidFrame
         }
     }
     
-    class func getImageFromAsset(asset: AVAsset, time: CMTime) -> CGImage? {
+    class func getImageFromAsset(_ asset: AVAsset, time: CMTime) -> CGImage? {
         let imageGenerator = AVAssetImageGenerator(asset: asset)
         var actualTime = kCMTimeZero
         do {
-            return try imageGenerator.copyCGImageAtTime(time, actualTime: &actualTime)
+            return try imageGenerator.copyCGImage(at: time, actualTime: &actualTime)
         } catch {
             print("Error grabbing image at time", time)
             return nil
@@ -279,7 +303,7 @@ class NMVideoFrame: NSObject {
         return NMImageAnalyzer(image: self.image!)
     }
     
-    func differenceScore(frame2: NMVideoFrame) -> Float {
+    func differenceScore(_ frame2: NMVideoFrame) -> Float {
         let analyzer1 = self.imageAnalyzer()
         let analyzer2 = frame2.imageAnalyzer()
         return analyzer1.differenceScoreByColorGrid(analyzer2)
@@ -301,26 +325,26 @@ class NMInterestingTimeAnalysisOperation: NMOperation {
     }
     
     override func main() {
-        if self.cancelled {
+        if self.isCancelled {
             return
         }
         
         do {
             let frame1 = try NMVideoFrame(asset: asset, time: time1)
             
-            if self.cancelled {
+            if self.isCancelled {
                 return
             }
             
             let frame2 = try NMVideoFrame(asset: asset, time: time2)
             
-            if self.cancelled {
+            if self.isCancelled {
                 return
             }
             
             let diff = frame1.differenceScore(frame2)
             
-            if self.cancelled {
+            if self.isCancelled {
                 return
             }
             
@@ -335,13 +359,13 @@ class NMInterestingTimeAnalysisOperation: NMOperation {
 
 
 class NMVideoProcessorOperations {
-    var allOperations = [NSOperation]()
+    var allOperations = [Operation]()
     
     lazy var interestingTimeAnalysisQueue: NMOperationQueue = {
         let queue = NMOperationQueue()
         queue.name = "interesting time analysis queue"
-        queue.qualityOfService = NSQualityOfService.Utility
-        queue.addOperationCallback = { (op: NSOperation) -> Void in
+        queue.qualityOfService = QualityOfService.utility
+        queue.addOperationCallback = { (op: Operation) -> Void in
             self.allOperations.append(op)
         }
         return queue
@@ -365,12 +389,12 @@ class NMVideoProcessorOperations {
 
 class NMVideoProcessor: NSObject {
     
-    init (forFiles fileURLs:[NSURL]) {
+    init (forFiles fileURLs:[URL]) {
         super.init()
         
         self.fileURLs = fileURLs
         for url in self.fileURLs {
-            self.assets.append(AVAsset(URL: url))
+            self.assets.append(AVAsset(url: url))
         }
         if (self.assets.count > 0) {
             self.primaryAsset = self.assets[0]
@@ -379,14 +403,14 @@ class NMVideoProcessor: NSObject {
         self.reset()
         
         // Creates main video track for composition
-        self.compositionTrackVideo = self.composition.addMutableTrackWithMediaType(AVMediaTypeVideo, preferredTrackID: 0)
+        self.compositionTrackVideo = self.composition.addMutableTrack(withMediaType: AVMediaTypeVideo, preferredTrackID: 0)
     }
     
-    var completionHandler: (Void -> Void)?
+    var completionHandler: ((Void) -> Void)?
     
     var operations = NMVideoProcessorOperations()
     
-    var fileURLs = [NSURL]()
+    var fileURLs = [URL]()
     var assets = [AVAsset]()
     var primaryAsset:AVAsset?
     var previewTime = kCMTimeZero
@@ -400,7 +424,7 @@ class NMVideoProcessor: NSObject {
     func beginProcessing() {
         self.operations.interestingTimeAnalysisQueue.onFinalOperationCompleted = {
             print("sorting and inserting")
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            DispatchQueue.main.async(execute: { () -> Void in
                 self.sortInterestingTimes()
                 self.insertFootageFromInterestingTimes()
                 self.completionHandler?()
@@ -408,7 +432,7 @@ class NMVideoProcessor: NSObject {
             self.operations.interestingTimeAnalysisQueue.onFinalOperationCompleted = nil
         }
         
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+        DispatchQueue.main.async { () -> Void in
             self.analyzeInterestingTimes()
         }
     }
@@ -424,7 +448,7 @@ class NMVideoProcessor: NSObject {
 
     
     // Finds "interesting" times in all asset video tracks.
-    private func analyzeInterestingTimes() {
+    fileprivate func analyzeInterestingTimes() {
         print("finding interesting times")
 
         if let asset = self.primaryAsset {
@@ -439,14 +463,14 @@ class NMVideoProcessor: NSObject {
         }
     }
     
-    private func sortInterestingTimes() {
+    fileprivate func sortInterestingTimes() {
         print("sorting interesting times")
         
 //        self.interestingTimes.sortInPlace({ $0.score > $1.score })
-        self.interestingTimes.sortInPlace({ $0.timeRange.start.seconds < $1.timeRange.start.seconds })
+        self.interestingTimes.sort(by: { $0.timeRange.start.seconds < $1.timeRange.start.seconds })
     }
     
-    private func insertFootageFromInterestingTimes() {
+    fileprivate func insertFootageFromInterestingTimes() {
         if (self.primaryAsset == nil) {
             print("No primary asset to work with")
             return
@@ -457,7 +481,7 @@ class NMVideoProcessor: NSObject {
         }
         for time in self.interestingTimes {
             do {
-                try self.compositionTrackVideo!.insertTimeRange(time.timeRange, ofTrack: self.primaryAsset!.tracksWithMediaType(AVMediaTypeVideo)[0], atTime: self.currentCompositionTime)
+                try self.compositionTrackVideo!.insertTimeRange(time.timeRange, of: self.primaryAsset!.tracks(withMediaType: AVMediaTypeVideo)[0], at: self.currentCompositionTime)
                 self.currentCompositionTime = CMTimeAdd(self.currentCompositionTime, time.timeRange.duration)
             } catch {
                 print("Error inserting footage")

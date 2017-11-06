@@ -14,12 +14,12 @@ class ViewController: NSViewController {
     
     @IBOutlet weak var fileDisplay: NSTextField!
     
-    lazy var statusWindowCtrl: NSWindowController = self.storyboard!.instantiateControllerWithIdentifier("StatusWindowController") as! NSWindowController
+    lazy var statusWindowCtrl: NSWindowController = self.storyboard!.instantiateController(withIdentifier: "StatusWindowController") as! NSWindowController
     lazy var statusViewCtrl: StatusViewController = self.statusWindowCtrl.contentViewController as! StatusViewController
-    lazy var previewWindowCtrl: NSWindowController = self.storyboard!.instantiateControllerWithIdentifier("PreviewWindowController") as! NSWindowController
+    lazy var previewWindowCtrl: NSWindowController = self.storyboard!.instantiateController(withIdentifier: "PreviewWindowController") as! NSWindowController
     lazy var previewViewCtrl: PreviewViewController = self.previewWindowCtrl.contentViewController as! PreviewViewController
     
-    var videoURLs = [NSURL]()
+    var videoURLs = [URL]()
     var activeProcessor:NMVideoProcessor? {
         didSet {
             statusViewCtrl.videoProcessor = activeProcessor
@@ -33,7 +33,7 @@ class ViewController: NSViewController {
         previewWindowCtrl.showWindow(self)
     }
 
-    override var representedObject: AnyObject? {
+    override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
         }
@@ -41,15 +41,15 @@ class ViewController: NSViewController {
 
     
     // Allows user to choose which video files to process
-    @IBAction func addFiles(sender: AnyObject) {
+    @IBAction func addFiles(_ sender: AnyObject) {
         let openPanel = NSOpenPanel()
         openPanel.allowsMultipleSelection = true
         openPanel.runModal()
-        self.videoURLs += openPanel.URLs
+        self.videoURLs += openPanel.urls
         self.updateFileDisplay()
     }
-    @IBAction func reset(sender: AnyObject) {
-        self.videoURLs.removeAll(keepCapacity: false)
+    @IBAction func reset(_ sender: AnyObject) {
+        self.videoURLs.removeAll(keepingCapacity: false)
         self.updateFileDisplay()
         self.previewViewCtrl.reset()
         self.activeProcessor?.reset()
@@ -58,15 +58,15 @@ class ViewController: NSViewController {
     func updateFileDisplay() {
         let str:NSMutableString = ""
         for url in self.videoURLs {
-            str.appendString("• ")
-            str.appendString(url.lastPathComponent!)
-            str.appendString("\n")
+            str.append("• ")
+            str.append(url.lastPathComponent)
+            str.append("\n")
         }
         self.fileDisplay.stringValue = str as String
     }
 
     // Begins processing video files
-    @IBAction func process(sender: AnyObject) {
+    @IBAction func process(_ sender: AnyObject) {
         let processor = NMVideoProcessor(forFiles: self.videoURLs)
         self.activeProcessor = processor
         
@@ -79,12 +79,12 @@ class ViewController: NSViewController {
     }
     
     // Shows window with processor queue status
-    @IBAction func showStatus(sender: AnyObject) {
+    @IBAction func showStatus(_ sender: AnyObject) {
 //        statusViewCtrl.videoProcessor = self.activeProcessor
         statusWindowCtrl.showWindow(self)
     }
     
-    @IBAction func showPreview(sender: AnyObject) {
+    @IBAction func showPreview(_ sender: AnyObject) {
         previewWindowCtrl.showWindow(self)
     }
     

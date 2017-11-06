@@ -17,7 +17,7 @@ class StatusViewController: NSViewController, NSOutlineViewDataSource {
             self.updateProgress()
         }
     }
-    lazy var updateProgressTimer: NSTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("updateProgress"), userInfo: nil, repeats: true)
+    lazy var updateProgressTimer: Timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(StatusViewController.updateProgress), userInfo: nil, repeats: true)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ class StatusViewController: NSViewController, NSOutlineViewDataSource {
         self.tableView.reloadData()
     }
 
-    func outlineView(outlineView: NSOutlineView, child index: Int, ofItem item: AnyObject?) -> AnyObject {
+    func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         if let processor = videoProcessor {
             if item == nil {
                 return processor.operations.allOperations[index]
@@ -47,11 +47,11 @@ class StatusViewController: NSViewController, NSOutlineViewDataSource {
         return "error"
     }
     
-    func outlineView(outlineView: NSOutlineView, isItemExpandable item: AnyObject) -> Bool {
+    func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
         return false
     }
     
-    func outlineView(outlineView: NSOutlineView, numberOfChildrenOfItem item: AnyObject?) -> Int {
+    func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         if (item == nil) {
             if let processor = self.videoProcessor {
                 return processor.operations.allOperations.count
@@ -62,7 +62,7 @@ class StatusViewController: NSViewController, NSOutlineViewDataSource {
         return 0
     }
     
-    func outlineView(outlineView: NSOutlineView, objectValueForTableColumn tableColumn: NSTableColumn?, byItem item: AnyObject?) -> AnyObject? {
+    func outlineView(_ outlineView: NSOutlineView, objectValueFor tableColumn: NSTableColumn?, byItem item: Any?) -> Any? {
         if let operationItem = item as? NMInterestingTimeAnalysisOperation {
             switch tableColumn!.identifier {
             case "status":

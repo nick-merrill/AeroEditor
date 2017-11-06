@@ -9,17 +9,17 @@
 import Cocoa
 
 
-class NMOperation: NSOperation {
+class NMOperation: Operation {
     var failed = false
     
     func statusDescription() -> String {
         if self.failed {
             return "Failed"
-        } else if self.executing {
+        } else if self.isExecuting {
             return "Processing"
-        } else if self.finished {
+        } else if self.isFinished {
             return "Finished"
-        } else if self.ready {
+        } else if self.isReady {
             return "Queued"
         } else if self.dependencies.count > 0 {
             return "Queued (Pending Dependencies)"
@@ -30,19 +30,19 @@ class NMOperation: NSOperation {
 }
 
 
-class NMOperationQueue: NSOperationQueue {
+class NMOperationQueue: OperationQueue {
     override init() {
         super.init()
         //        self.maxConcurrentOperationCount = 2  // FIXME: for testing only
     }
     
-    lazy var operationsComplete = [NSOperation]()
+    lazy var operationsComplete = [Operation]()
     
-    var onFinalOperationCompleted: (Void -> Void)?
-    var addOperationCallback: (NSOperation -> Void)?
+    var onFinalOperationCompleted: ((Void) -> Void)?
+    var addOperationCallback: ((Operation) -> Void)?
     
     // Ensure operation is appended to completed operations array on completion
-    override func addOperation(op: NSOperation) {
+    override func addOperation(_ op: Operation) {
         op.completionBlock = {
             if let presetCompletionBlock = op.completionBlock {
                 presetCompletionBlock()

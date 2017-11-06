@@ -14,10 +14,10 @@ class ChooseDetailViewController: SubMainViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("updateSelection:"), name: "ChooseOutlineViewSelectionChanged", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChooseDetailViewController.updateSelection(_:)), name: NSNotification.Name(rawValue: "ChooseOutlineViewSelectionChanged"), object: nil)
     }
     
-    func updateSelection(notification: NSNotification) {
+    func updateSelection(_ notification: Notification) {
         angle = notification.userInfo?["selectedAngle"] as? NMFootageAngle
     }
 }
